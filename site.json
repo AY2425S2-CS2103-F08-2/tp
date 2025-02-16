@@ -1,5 +1,5 @@
 {
-  "baseUrl": "",
+  "baseUrl": "/tp/",
   "titlePrefix": "",
   "titleSuffix": "",
   "ignore": [
@@ -23,6 +23,8 @@
     }
   ],
   "deploy": {
-    "message": "Site Update."
+    "message": "Site Update.",
+    "remote": "origin",
+    "branch": "gh-pages"
   }
 }
