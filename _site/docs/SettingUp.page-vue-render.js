@@ -1,0 +1,22 @@
+
+    var pageVueRenderFn = function noop (a, b, c) {};
+    var pageVueStaticRenderFns = [function anonymous(
+) {
+with(this){return _c('h2',{attrs:{"id":"setting-up-the-project-in-your-computer"}},[_v("Setting up the project in your computer"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#setting-up-the-project-in-your-computer","onclick":"event.stopPropagation()"}})])}
+},function anonymous(
+) {
+with(this){return _c('div',{staticClass:"alert alert-warning",attrs:{"markdown":"span"}},[_v(":exclamation: **Caution:**\n"),_c('p',[_v("Follow the steps in the following guide precisely. Things will not work out if you deviate in some steps.")])])}
+},function anonymous(
+) {
+with(this){return _c('p',[_v("First, "),_c('strong',[_v("fork")]),_v(" this repo, and "),_c('strong',[_v("clone")]),_v(" the fork into your computer.")])}
+},function anonymous(
+) {
+with(this){return _c('ol',[_c('li',[_c('strong',[_v("Configure the JDK")]),_v(": Follow the guide "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijJdk.html"}},[_c('em',[_v("[se-edu/guides] IDEA: Configuring the JDK")])]),_v(" to ensure Intellij is configured to use "),_c('strong',[_v("JDK 17")]),_v(".")]),_v(" "),_c('li',[_c('strong',[_v("Import the project as a Gradle project")]),_v(": Follow the guide "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijImportGradleProject.html"}},[_c('em',[_v("[se-edu/guides] IDEA: Importing a Gradle project")])]),_v(" to import the project into IDEA."),_c('br'),_v("\n❗️ Note: Importing a Gradle project is slightly different from importing a normal Java project.")]),_v(" "),_c('li',[_c('strong',[_v("Verify the setup")]),_v(":\n"),_c('ol',[_c('li',[_v("Run the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("seedu.address.Main")]),_v(" and try a few commands.")]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/docs/Testing.html"}},[_v("Run the tests")]),_v(" to ensure they all pass.")])])])])}
+},function anonymous(
+) {
+with(this){return _c('h2',{attrs:{"id":"before-writing-code"}},[_v("Before writing code"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#before-writing-code","onclick":"event.stopPropagation()"}})])}
+},function anonymous(
+) {
+with(this){return _c('ol',[_c('li',[_c('p',[_c('strong',[_v("Configure the coding style")])]),_v(" "),_c('p',[_v("If using IDEA, follow the guide "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/intellijCodeStyle.html"}},[_c('em',[_v("[se-edu/guides] IDEA: Configuring the code style")])]),_v(" to set up IDEA's coding style to match ours.")]),_v(" "),_c('div',{staticClass:"alert alert-primary",attrs:{"markdown":"span"}},[_v(":bulb: **Tip:**\n"),_c('p',[_v("Optionally, you can follow the guide "),_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/checkstyle.html"}},[_c('em',[_v("[se-edu/guides] Using Checkstyle")])]),_v(" to find how to use the CheckStyle within IDEA e.g., to report problems "),_c('em',[_v("as")]),_v(" you write code.")])])]),_v(" "),_c('li',[_c('p',[_c('strong',[_v("Set up CI")])]),_v(" "),_c('p',[_v("This project comes with a GitHub Actions config files (in "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v(".github/workflows")]),_v(" folder). When GitHub detects those files, it will run the CI for your project automatically at each push to the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("master")]),_v(" branch or to any PR. No set up required.")])]),_v(" "),_c('li',[_c('p',[_c('strong',[_v("Learn the design")])]),_v(" "),_c('p',[_v("When you are ready to start coding, we recommend that you get some sense of the overall design by reading about "),_c('a',{attrs:{"href":"/docs/DeveloperGuide.html#architecture"}},[_v("AddressBook’s architecture")]),_v(".")])]),_v(" "),_c('li',[_c('p',[_c('strong',[_v("Do the tutorials")]),_v("\nThese tutorials will help you get acquainted with the codebase.")]),_v(" "),_c('ul',[_c('li',[_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/ab3TracingCode.html"}},[_v("Tracing code")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/ab3AddRemark.html"}},[_v("Adding a new command")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"https://se-education.org/guides/tutorials/ab3RemovingFields.html"}},[_v("Removing fields")])])])])])}
+}];
+  
