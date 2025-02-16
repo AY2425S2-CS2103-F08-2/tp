@@ -11,7 +11,7 @@ with(this){return _c('ul',[_c('li',{attrs:{"list":"","here":"","sources":"","of"
 with(this){return _c('h2',{attrs:{"id":"setting-up-getting-started"}},[_c('strong',[_v("Setting up, getting started")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#setting-up-getting-started","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("Refer to the guide "),_c('a',{attrs:{"href":"/docs/SettingUp.html"}},[_c('em',[_v("Setting up and getting started")])]),_v(".")])}
+with(this){return _c('p',[_v("Refer to the guide "),_c('a',{attrs:{"href":"/tp/docs/SettingUp.html"}},[_c('em',[_v("Setting up and getting started")])]),_v(".")])}
 },function anonymous(
 ) {
 with(this){return _c('h2',{attrs:{"id":"design"}},[_c('strong',[_v("Design")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#design","onclick":"event.stopPropagation()"}})])}
@@ -59,7 +59,7 @@ with(this){return _c('h3',{attrs:{"id":"ui-component"}},[_v("UI component"),_c('
 with(this){return _c('p',[_v("The "),_c('strong',[_v("API")]),_v(" of this component is specified in "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Ui.java")])])])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UiClassDiagram.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UiClassDiagram.png","alt":"Structure of the UI Component"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UiClassDiagram.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UiClassDiagram.png","alt":"Structure of the UI Component"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The UI consists of a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")]),_v(" that is made up of parts e.g."),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("CommandBox")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ResultDisplay")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PersonListPanel")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("StatusBarFooter")]),_v(" etc. All these, including the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")]),_v(", inherit from the abstract "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UiPart")]),_v(" class which captures the commonalities between classes that represent parts of the visible GUI.")])}
@@ -86,7 +86,7 @@ with(this){return _c('p',[_v("Here's a (partial) class diagram of the "),_c('cod
 with(this){return _c('p',[_v("The sequence diagram below illustrates the interactions within the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component, taking "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("execute(\"delete 1\")")]),_v(" API call as an example.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/DeleteSequenceDiagram.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/DeleteSequenceDiagram.png","alt":"Interactions Inside the Logic Component for the `delete 1` Command"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/DeleteSequenceDiagram.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/DeleteSequenceDiagram.png","alt":"Interactions Inside the Logic Component for the `delete 1` Command"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("How the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component works:")])}
@@ -113,7 +113,7 @@ with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs in
 with(this){return _c('ul',[_c('li',[_v("stores the address book data i.e., all "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Person")]),_v(" objects (which are contained in a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UniquePersonList")]),_v(" object).")]),_v(" "),_c('li',[_v("stores the currently 'selected' "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Person")]),_v(" objects (e.g., results of a search query) as a separate "),_c('em',[_v("filtered")]),_v(" list which is exposed to outsiders as an unmodifiable "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ObservableList<Person>")]),_v(" that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.")]),_v(" "),_c('li',[_v("stores a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UserPref")]),_v(" object that represents the user’s preferences. This is exposed to the outside as a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ReadOnlyUserPref")]),_v(" objects.")]),_v(" "),_c('li',[_v("does not depend on any of the other three components (as the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" represents data entities of the domain, they should make sense on their own without depending on other components)")])])}
 },function anonymous(
 ) {
-with(this){return _c('div',{staticClass:"alert alert-info",attrs:{"markdown":"span"}},[_v(":information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects."),_c('br'),_v(" "),_c('img',{attrs:{"src":"/docs/images/BetterModelClassDiagram.png","width":"450"}})])}
+with(this){return _c('div',{staticClass:"alert alert-info",attrs:{"markdown":"span"}},[_v(":information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Person` references. This allows `AddressBook` to only require one `Tag` object per unique tag, instead of each `Person` needing their own `Tag` objects."),_c('br'),_v(" "),_c('img',{attrs:{"src":"/tp/docs/images/BetterModelClassDiagram.png","width":"450"}})])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"storage-component"}},[_v("Storage component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#storage-component","onclick":"event.stopPropagation()"}})])}
@@ -155,37 +155,37 @@ with(this){return _c('p',[_v("These operations are exposed in the "),_c('code',{
 with(this){return _c('p',[_v("Step 1. The user launches the application for the first time. The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("VersionedAddressBook")]),_v(" will be initialized with the initial address book state, and the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" pointing to that single address book state.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState0.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState0.png","alt":"UndoRedoState0"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState0.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState0.png","alt":"UndoRedoState0"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Step 2. The user executes "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 5")]),_v(" command to delete the 5th person in the address book. The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete")]),_v(" command calls "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#commitAddressBook()")]),_v(", causing the modified state of the address book after the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("delete 5")]),_v(" command executes to be saved in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addressBookStateList")]),_v(", and the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" is shifted to the newly inserted address book state.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState1.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState1.png","alt":"UndoRedoState1"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState1.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState1.png","alt":"UndoRedoState1"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Step 3. The user executes "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("add n/David …​")]),_v(" to add a new person. The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("add")]),_v(" command also calls "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#commitAddressBook()")]),_v(", causing another modified address book state to be saved into the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addressBookStateList")]),_v(".")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState2.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState2.png","alt":"UndoRedoState2"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState2.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState2.png","alt":"UndoRedoState2"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("undo")]),_v(" command. The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("undo")]),_v(" command will call "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#undoAddressBook()")]),_v(", which will shift the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" once to the left, pointing it to the previous address book state, and restores the address book to that state.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState3.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState3.png","alt":"UndoRedoState3"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState3.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState3.png","alt":"UndoRedoState3"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The following sequence diagram shows how an undo operation goes through the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component:")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoSequenceDiagram-Logic.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoSequenceDiagram-Logic.png","alt":"UndoSequenceDiagram"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoSequenceDiagram-Logic.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoSequenceDiagram-Logic.png","alt":"UndoSequenceDiagram"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Similarly, how an undo operation goes through the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" component is shown below:")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoSequenceDiagram-Model.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoSequenceDiagram-Model.png","alt":"UndoSequenceDiagram"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoSequenceDiagram-Model.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoSequenceDiagram-Model.png","alt":"UndoSequenceDiagram"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("redo")]),_v(" command does the opposite — it calls "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#redoAddressBook()")]),_v(", which shifts the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" once to the right, pointing to the previously undone state, and restores the address book to that state.")])}
@@ -194,13 +194,13 @@ with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs in
 with(this){return _c('p',[_v("Step 5. The user then decides to execute the command "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(". Commands that do not modify the address book, such as "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("list")]),_v(", will usually not call "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#commitAddressBook()")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#undoAddressBook()")]),_v(" or "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#redoAddressBook()")]),_v(". Thus, the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addressBookStateList")]),_v(" remains unchanged.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState4.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState4.png","alt":"UndoRedoState4"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState4.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState4.png","alt":"UndoRedoState4"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Step 6. The user executes "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("clear")]),_v(", which calls "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model#commitAddressBook()")]),_v(". Since the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" is not pointing at the end of the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("addressBookStateList")]),_v(", all address book states after the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("currentStatePointer")]),_v(" will be purged. Reason: It no longer makes sense to redo the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("add n/David …​")]),_v(" command. This is the behavior that most modern desktop applications follow.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('a',{attrs:{"href":"/docs/images/UndoRedoState5.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/docs/images/UndoRedoState5.png","alt":"UndoRedoState5"}})])])}
+with(this){return _c('p',[_c('a',{attrs:{"href":"/tp/docs/images/UndoRedoState5.png","target":"_self"}},[_c('img',{staticClass:"img-fluid",attrs:{"src":"/tp/docs/images/UndoRedoState5.png","alt":"UndoRedoState5"}})])])}
 },function anonymous(
 ) {
 with(this){return _c('h4',{attrs:{"id":"design-considerations"}},[_v("Design considerations:"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#design-considerations","onclick":"event.stopPropagation()"}})])}
@@ -224,7 +224,7 @@ with(this){return _c('p',[_c('em',[_v("{Explain here how the data archiving feat
 with(this){return _c('h2',{attrs:{"id":"documentation-logging-testing-configuration-dev-ops"}},[_c('strong',[_v("Documentation, logging, testing, configuration, dev-ops")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#documentation-logging-testing-configuration-dev-ops","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('a',{attrs:{"href":"/docs/Documentation.html"}},[_v("Documentation guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/docs/Testing.html"}},[_v("Testing guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/docs/Logging.html"}},[_v("Logging guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/docs/Configuration.html"}},[_v("Configuration guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/docs/DevOps.html"}},[_v("DevOps guide")])])])}
+with(this){return _c('ul',[_c('li',[_c('a',{attrs:{"href":"/tp/docs/Documentation.html"}},[_v("Documentation guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/tp/docs/Testing.html"}},[_v("Testing guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/tp/docs/Logging.html"}},[_v("Logging guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/tp/docs/Configuration.html"}},[_v("Configuration guide")])]),_v(" "),_c('li',[_c('a',{attrs:{"href":"/tp/docs/DevOps.html"}},[_v("DevOps guide")])])])}
 },function anonymous(
 ) {
 with(this){return _c('h2',{attrs:{"id":"appendix-requirements"}},[_c('strong',[_v("Appendix: Requirements")]),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#appendix-requirements","onclick":"event.stopPropagation()"}})])}

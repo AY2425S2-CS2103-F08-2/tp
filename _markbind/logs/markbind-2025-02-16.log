@@ -170,3 +170,50 @@
 2025-02-16T13:05:17.268Z - info: Website generation complete! Total build time: 0.943s
 2025-02-16T13:05:17.268Z - info: Build success!
 2025-02-16T13:05:21.675Z - info: The website has been deployed at: https://ay2425s2-cs2103-f08-2.github.io/tp
+2025-02-16T13:11:12.271Z - info: Website generation started at 9:11:12 PM
+2025-02-16T13:11:12.419Z - info: Building assets...
+2025-02-16T13:11:12.567Z - info: Assets built
+2025-02-16T13:11:12.568Z - info: Generating pages...
+2025-02-16T13:11:12.675Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.684Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.709Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.737Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.744Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.751Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.756Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.778Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.811Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.812Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.828Z - error: 'page' layout does not exist
+2025-02-16T13:11:12.847Z - warn: You might have an invalid hash for intra-link! Ignore this warning if it was intended.'
+  /tp/docs/UserGuide.html#quick-start' found in file 'D:\Lectures\Assignments\CS2103\tp\docs\index.md'
+2025-02-16T13:11:12.848Z - warn: You might have an invalid hash for intra-link! Ignore this warning if it was intended.'
+  /tp/docs/DeveloperGuide.html#architecture' found in file 'D:\Lectures\Assignments\CS2103\tp\docs\SettingUp.md'
+2025-02-16T13:11:12.850Z - info: Pages built
+2025-02-16T13:11:12.940Z - info: Site data built
+2025-02-16T13:11:12.941Z - info: Website generation complete! Total build time: 0.741s
+2025-02-16T13:11:12.941Z - info: Build success!
+2025-02-16T13:11:16.667Z - info: Website generation started at 9:11:16 PM
+2025-02-16T13:11:16.813Z - info: Building assets...
+2025-02-16T13:11:16.969Z - info: Assets built
+2025-02-16T13:11:16.969Z - info: Generating pages...
+2025-02-16T13:11:17.084Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.110Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.110Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.140Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.147Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.153Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.158Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.181Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.226Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.236Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.245Z - error: 'page' layout does not exist
+2025-02-16T13:11:17.266Z - warn: You might have an invalid hash for intra-link! Ignore this warning if it was intended.'
+  /tp/docs/UserGuide.html#quick-start' found in file 'D:\Lectures\Assignments\CS2103\tp\docs\index.md'
+2025-02-16T13:11:17.267Z - warn: You might have an invalid hash for intra-link! Ignore this warning if it was intended.'
+  /tp/docs/DeveloperGuide.html#architecture' found in file 'D:\Lectures\Assignments\CS2103\tp\docs\SettingUp.md'
+2025-02-16T13:11:17.269Z - info: Pages built
+2025-02-16T13:11:17.348Z - info: Site data built
+2025-02-16T13:11:17.348Z - info: Website generation complete! Total build time: 0.748s
+2025-02-16T13:11:17.348Z - info: Build success!
+2025-02-16T13:11:24.594Z - info: The website has been deployed at: https://ay2425s2-cs2103-f08-2.github.io/tp
