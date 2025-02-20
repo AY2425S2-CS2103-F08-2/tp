@@ -1,0 +1,10 @@
+{
+  "enableSearch": true,
+  "pages": [
+    {
+      "src": "index.md",
+      "headings": {},
+      "headingKeywords": {}
+    }
+  ]
+}

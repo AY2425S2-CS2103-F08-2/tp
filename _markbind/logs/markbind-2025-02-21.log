@@ -1,0 +1,29 @@
+2025-02-20T16:20:19.282Z - info: Website generation started at 12:20:19 AM
+2025-02-20T16:20:19.429Z - warn: ENOENT: no such file or directory, open 'D:\Lectures\Assignments\CS2103\tp\_markbind\variables.md'
+2025-02-20T16:20:19.432Z - info: Building assets...
+2025-02-20T16:20:19.599Z - info: Assets built
+2025-02-20T16:20:19.599Z - info: Generating pages...
+2025-02-20T16:20:19.603Z - error:  Error: template not found: index.md
+    at createTemplate (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\patches\nunjucks\load-event.js:96:13)
+    at next (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\nunjucks\src\lib.js:260:7)
+    at handle (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\patches\nunjucks\load-event.js:135:9)
+    at C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\patches\nunjucks\load-event.js:145:7
+    at next (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\nunjucks\src\lib.js:258:7)
+    at Object.asyncIter (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\nunjucks\src\lib.js:263:3)
+    at Environment.getTemplate (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\patches\nunjucks\load-event.js:127:7)
+    at Environment.render (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\patches\nunjucks\context-overrides-frame.js:48:8)
+    at VariableRenderer.renderFile (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\variables\VariableRenderer.js:73:24)
+    at VariableProcessor.renderWithSiteVariables (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\variables\VariableProcessor.js:154:57)
+    at Page.<anonymous> (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Page\index.js:494:45)
+    at Generator.next (<anonymous>)
+    at C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Page\index.js:31:71
+    at new Promise (<anonymous>)
+    at __awaiter (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Page\index.js:27:12)
+    at Page.generate (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Page\index.js:477:16)
+2025-02-20T16:20:19.604Z - warn:  Error: Error while generating D:\Lectures\Assignments\CS2103\tp\index.md
+    at Site.<anonymous> (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Site\index.js:971:28)
+    at Generator.throw (<anonymous>)
+    at rejected (C:\Users\ervin\AppData\Roaming\npm\node_modules\markbind-cli\node_modules\@markbind\core\src\Site\index.js:29:65)
+2025-02-20T16:20:19.694Z - info: Site data built
+2025-02-20T16:20:19.694Z - info: Website generation complete! Total build time: 0.422s
+2025-02-20T16:20:19.694Z - info: Build success!
