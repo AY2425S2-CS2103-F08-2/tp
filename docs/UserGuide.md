@@ -79,7 +79,7 @@ Format: `help`
 
 Adds a person to the address book.
 
-Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [r/RENEWAL_DATE] [t/TAG]…​`
+Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [r/RENEWAL_DATE] [note/NOTE] [t/TAG]…​`
 
 <box type="tip" seamless>
 
@@ -88,8 +88,8 @@ Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [r/RENEWA
 
 Examples:
 
--   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pol/123456 r/31-12-2024`
--   `add n/Betsy Crowe t/friend pol/654321 e/betsycrowe@example.com a/Newgate Prison p/1234567 t/criminal`
+-   `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01 pol/123456 r/31-12-2024 note/Basketball Player`
+-   `add n/Betsy Crowe t/friend pol/654321 e/betsycrowe@example.com a/Newgate Prison note/Birthday Tomorrow p/1234567 t/criminal`
 
 ### Listing all persons : `list`
 
@@ -113,7 +113,7 @@ The renewal date is clearly labeled to help insurance agents quickly identify wh
 
 Edits an existing person in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pol/POLICY] [r/RENEWAL_DATE] [t/TAG]…​`
+Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pol/POLICY] [r/RENEWAL_DATE] [note/NOTE] [t/TAG]…​`
 
 -   Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
 -   At least one of the optional fields must be provided.
@@ -259,14 +259,14 @@ _Details coming soon ..._
 
 ## Command summary
 
-| Action            | Format, Examples                                                                                                                                                                                                    |
-| ----------------- |---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Add**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [r/RENEWAL_DATE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pol/183548 t/friend t/colleague` |
-| **Clear**         | `clear`                                                                                                                                                                                                             |
-| **Delete**        | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                 |
-| **Edit**          | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [pol/POLICY] [r/RENEWAL_DATE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                           |
-| **Find**          | `find [n/NAME]… [p/PHONE]… [e/EMAIL]… [a/ADDRESS]… [pol/POLICY_NUMBER]… [t/TAG]… [s/SORT_ORDER]`<br> e.g., `find n/James n/Jake p/98765432`                                                                         |
-| **List**          | `list`                                                                                                                                                                                                              |
-| **Help**          | `help`                                                                                                                                                                                                              |
-| **Renew**         | `renew pol/POLICY_NUMBER r/RENEWAL_DATE`<br> e.g., `renew pol/123456 r/31-12-2025`                                                                                                                                  |
-| **View Renewals** | `viewrenewals [n/NEXT_N_DAYS] [s/SORT_ORDER]`<br> e.g., `viewrenewals n/60 s/name`                                                                                                                                  |
+| Action            | Format, Examples                                                                                                                                                                                                                              |
+| ----------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add**           | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [r/RENEWAL_DATE] [note/NOTE] [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 pol/183548 t/friend note/Is lovely t/colleague` |
+| **Clear**         | `clear`                                                                                                                                                                                                                                       |
+| **Delete**        | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                                                                                           |
+| **Edit**          | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [pol/POLICY] [r/RENEWAL_DATE] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`                                                                                      |
+| **Find**          | `find [n/NAME]… [p/PHONE]… [e/EMAIL]… [a/ADDRESS]… [pol/POLICY_NUMBER]… [t/TAG]… [s/SORT_ORDER]`<br> e.g., `find n/James n/Jake p/98765432`                                                                                                   |
+| **List**          | `list`                                                                                                                                                                                                                                        |
+| **Help**          | `help`                                                                                                                                                                                                                                        |
+| **Renew**         | `renew pol/POLICY_NUMBER r/RENEWAL_DATE`<br> e.g., `renew pol/123456 r/31-12-2025`                                                                                                                                                            |
+| **View Renewals** | `viewrenewals [n/NEXT_N_DAYS] [s/SORT_ORDER]`<br> e.g., `viewrenewals n/60 s/name`                                                                                                                                                            |
