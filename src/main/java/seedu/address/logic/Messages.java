@@ -45,11 +45,9 @@ public class Messages {
                 .append("; Address: ")
                 .append(person.getAddress())
                 .append("; Policy number: ")
-                .append(person.getPolicy().policyNumber)
-                .append("; Policy type: ")
-                .append(person.getPolicy().getType())
-                .append("; Renewal date: ")
-                .append(person.getPolicy().renewalDate)
+                .append(person.getPolicy())
+                .append("; Note: ")
+                .append(person.getNote())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
         return builder.toString();

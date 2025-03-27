@@ -13,6 +13,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
+import seedu.address.model.person.Note;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Policy;
@@ -32,7 +33,7 @@ class JsonAdaptedPerson {
     private final String address;
     private final String policy;
     private final String renewalDate;
-    private final String policyType;
+    private final String note;
     private final List<JsonAdaptedTag> tags = new ArrayList<>();
 
     /**
@@ -42,15 +43,14 @@ class JsonAdaptedPerson {
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("phone") String phone,
             @JsonProperty("email") String email, @JsonProperty("address") String address,
             @JsonProperty("policy") String policy, @JsonProperty("renewalDate") String renewalDate,
-            @JsonProperty("policyType") String policyType,
-            @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+            @JsonProperty("note") String note, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
         this.address = address;
         this.policy = policy;
         this.renewalDate = renewalDate;
-        this.policyType = policyType;
+        this.note = note;
         if (tags != null) {
             this.tags.addAll(tags);
         }
@@ -65,8 +65,8 @@ class JsonAdaptedPerson {
         email = source.getEmail().toString();
         address = source.getAddress().toString();
         policy = source.getPolicy().policyNumber;
+        note = source.getNote().toString();
         renewalDate = source.getPolicy().renewalDate.toString();
-        policyType = source.getPolicy().getType().toString();
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));
@@ -79,6 +79,7 @@ class JsonAdaptedPerson {
      */
     public Person toModelType() throws IllegalValueException {
         final List<Tag> personTags = new ArrayList<>();
+
         for (JsonAdaptedTag tag : tags) {
             personTags.add(tag.toModelType());
         }
@@ -123,10 +124,12 @@ class JsonAdaptedPerson {
             throw new IllegalValueException(Policy.MESSAGE_CONSTRAINTS);
         }
 
+        final Note modelNote = (note == null) ? Note.EMPTY : new Note(note);
+
         if (renewalDate == null) {
             final Policy modelPolicy = new Policy(policy);
             final Set<Tag> modelTags = new HashSet<>(personTags);
-            return new Person(modelName, modelPhone, modelEmail, modelAddress, modelPolicy, modelTags);
+            return new Person(modelName, modelPhone, modelEmail, modelAddress, modelPolicy, modelNote, modelTags);
         }
 
         if (!RenewalDate.isValidRenewalDate(renewalDate)) {
@@ -134,9 +137,9 @@ class JsonAdaptedPerson {
         }
 
         try {
-            final Policy modelPolicy = createPolicy(policy, renewalDate, policyType);
+            final Policy modelPolicy = createPolicy(policy, renewalDate);
             final Set<Tag> modelTags = new HashSet<>(personTags);
-            return new Person(modelName, modelPhone, modelEmail, modelAddress, modelPolicy, modelTags);
+            return new Person(modelName, modelPhone, modelEmail, modelAddress, modelPolicy, modelNote, modelTags);
         } catch (RuntimeException e) {
             throw new IllegalValueException(RenewalDate.DATE_CONSTRAINTS);
         }
@@ -146,10 +149,7 @@ class JsonAdaptedPerson {
      * Creates a Policy object with the given policy number and renewal date.
      * This method can be overridden in tests to simulate exceptions.
      */
-    protected Policy createPolicy(String policyNumber, String renewalDate, String policyType) {
-        if (policyType == null) {
-            return new Policy(policyNumber, renewalDate);
-        }
-        return new Policy(policyNumber, renewalDate, policyType);
+    protected Policy createPolicy(String policyNumber, String renewalDate) {
+        return new Policy(policyNumber, renewalDate);
     }
 }
