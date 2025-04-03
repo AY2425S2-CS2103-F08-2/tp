@@ -224,7 +224,7 @@ with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs in
 with(this){return _c('h4',{attrs:{"id":"findcommand"}},[_v("FindCommand"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#findcommand","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("FindCommand")]),_v(" enables users to search for persons based on any attribute, such as name, address, phone number, email, tags or policy. It is implemented using the following components:")])}
+with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("FindCommand")]),_v(" enables users to search for persons based on any attribute, such as name, address, phone number, email, tags or policy number. It is implemented using the following components:")])}
 },function anonymous(
 ) {
 with(this){return _c('ul',[_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("FindCommand")]),_v(": Executes the search operation.")]),_v(" "),_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("FindCommandParser")]),_v(": Parses and validates the user input into a FindCommand object.")]),_v(" "),_c('li',[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("FindPersonPredicate")]),_v(": A predicate that evaluates whether a person matches the search criteria.")])])}
@@ -506,6 +506,6 @@ with(this){return _c('h3',{attrs:{"id":"saving-data"}},[_v("Saving data"),_c('a'
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Dealing with missing/corrupted data files")]),_v(" "),_c('ol',[_c('li',[_c('em',[_v("{explain how to simulate a missing/corrupted file, and the expected behavior}")])])])]),_v(" "),_c('li',[_c('p',[_c('em',[_v("{ more test cases …​ }")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Thu, 3 Apr 2025, 21:43:50 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Thu, 3 Apr 2025, 21:57:13 GMT+8]")])])])}
 }];
   
