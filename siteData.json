@@ -54,8 +54,7 @@
         "policy-renewal-feature": "Policy Renewal Feature",
         "renewal-date-update-feature": "Renewal Date Update Feature",
         "find-persons-feature": "Find Persons Feature",
-        "proposed-undo-redo-feature": "[Proposed] Undo/redo feature",
-        "proposed-data-archiving": "[Proposed] Data archiving",
+        "policy-type-feature": "Policy Type Feature",
         "documentation-logging-testing-configuration-dev-ops": "Documentation, logging, testing, configuration, dev-ops",
         "appendix-requirements": "Appendix: Requirements",
         "product-scope": "Product scope",
@@ -125,7 +124,6 @@
         "viewing-upcoming-policy-renewals-viewrenewals": "Viewing upcoming policy renewals : viewrenewals",
         "saving-the-data": "Saving the data",
         "editing-the-data-file": "Editing the data file",
-        "archiving-data-files-coming-in-v2-0": "Archiving data files [coming in v2.0]",
         "faq": "FAQ",
         "known-issues": "Known issues",
         "command-summary": "Command summary"
