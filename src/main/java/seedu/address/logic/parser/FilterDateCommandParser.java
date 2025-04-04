@@ -1,11 +1,13 @@
 package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT_ORDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 
 import java.time.LocalDate;
+import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FilterDateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -32,10 +34,14 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
         requireNonNull(args);
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(args, PREFIX_START_DATE, PREFIX_END_DATE, PREFIX_SORT_ORDER);
+        String sortOrder = FilterDateCommand.DEFAULT_SORT;
 
-        if (argMultimap.getValue(PREFIX_START_DATE).isEmpty() || argMultimap.getValue(PREFIX_END_DATE).isEmpty()) {
-            throw new ParseException("Start date (sd/) and end date (ed/) are required.");
+        if (!arePrefixesPresent(argMultimap, PREFIX_START_DATE, PREFIX_END_DATE)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FilterDateCommand.MESSAGE_USAGE));
         }
+
+        argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_START_DATE, PREFIX_END_DATE, PREFIX_SORT_ORDER);
 
         LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
         LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
@@ -49,11 +55,26 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
             throw new ParseException(MESSAGE_INVALID_END_DATE);
         }
 
-        String sortOrder = argMultimap.getValue(PREFIX_SORT_ORDER).orElse("date").toLowerCase();
-        if (!sortOrder.equals("date") && !sortOrder.equals("name")) {
-            throw new ParseException(MESSAGE_INVALID_SORT);
+        if (argMultimap.getValue(PREFIX_SORT_ORDER).isPresent()) {
+            sortOrder = argMultimap.getValue(PREFIX_SORT_ORDER).get().toLowerCase();
+            if (!isValidSortOrder(sortOrder)) {
+                throw new ParseException(MESSAGE_INVALID_SORT);
+            }
         }
 
         return new FilterDateCommand(startDate, endDate, sortOrder);
+    }
+
+    private boolean isValidSortOrder(String sortOrder) {
+        return FilterDateCommand.SORT_BY_NAME.equals(sortOrder)
+                || FilterDateCommand.SORT_BY_DATE.equals(sortOrder);
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

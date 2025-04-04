@@ -283,6 +283,7 @@ public class ParserUtil {
      * @throws ParseException if the given {@code dateStr} is invalid.
      */
     public static LocalDate parseDate(String dateStr) throws IllegalArgumentException {
+        requireNonNull(dateStr);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         try {

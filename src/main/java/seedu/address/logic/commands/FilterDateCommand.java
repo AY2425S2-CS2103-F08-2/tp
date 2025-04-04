@@ -19,12 +19,16 @@ public class FilterDateCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters clients whose policy renewal date "
             + "falls within the specified date range.\n"
             + "Parameters: sd/START_DATE ed/END_DATE [s/SORT_ORDER]\n"
-            + "Example: " + COMMAND_WORD + " sd/2025-03-01 ed/2025-03-31 s/name";
+            + "Example: " + COMMAND_WORD + " sd/01-03-2025 ed/31-03-2025 s/name";
 
     public static final String MESSAGE_NO_RESULTS = "No renewals found between %s and %s.";
 
     public static final String MESSAGE_FILTER_SUCCESS = "Found %d policies due for renewal"
             + " between %s and %s.";
+
+    public static final String DEFAULT_SORT = "date";
+    public static final String SORT_BY_DATE = "date";
+    public static final String SORT_BY_NAME = "name";
 
     private final LocalDate startDate;
     private final LocalDate endDate;
