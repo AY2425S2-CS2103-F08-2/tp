@@ -37,6 +37,17 @@ public class UniquePersonList implements Iterable<Person> {
     }
 
     /**
+     * Returns true if the list contains an equivalent person as the given argument,
+     * excluding the person at the specified index.
+     */
+    private boolean containsExcept(Person toCheck, int excludeIndex) {
+        requireNonNull(toCheck);
+        return internalList.stream()
+                .filter(person -> internalList.indexOf(person) != excludeIndex)
+                .anyMatch(toCheck::isSamePerson);
+    }
+
+    /**
      * Adds a person to the list.
      * The person must not already exist in the list.
      */
@@ -61,7 +72,7 @@ public class UniquePersonList implements Iterable<Person> {
             throw new PersonNotFoundException();
         }
 
-        if (!target.isSamePerson(editedPerson) && contains(editedPerson)) {
+        if (containsExcept(editedPerson, index)) {
             throw new DuplicatePersonException();
         }
 

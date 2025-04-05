@@ -46,19 +46,27 @@ public class RenewalProcessorTest {
                 .build();
 
         List<Person> persons = Arrays.asList(person1, person2, person3);
-        RenewalTableData tableData = RenewalProcessor.processRenewals(persons);
+        RenewalTableData tableData = RenewalProcessor.processRenewals(persons, "date");
         List<RenewalEntry> entries = tableData.getEntries();
 
-        // Check sorting
+        // Check sorting by date
         assertEquals(3, entries.size());
         assertEquals("Bob", entries.get(0).getClient()); // Closest renewal date
         assertEquals("Alice", entries.get(1).getClient());
         assertEquals("Charlie", entries.get(2).getClient()); // Furthest renewal date
+
+        // Check sorting by name
+        tableData = RenewalProcessor.processRenewals(persons, "name");
+        entries = tableData.getEntries();
+        assertEquals(3, entries.size());
+        assertEquals("Alice", entries.get(0).getClient());
+        assertEquals("Bob", entries.get(1).getClient());
+        assertEquals("Charlie", entries.get(2).getClient());
     }
 
     @Test
     public void processRenewals_withEmptyList_returnsEmptyTableData() {
-        RenewalTableData tableData = RenewalProcessor.processRenewals(Arrays.asList());
+        RenewalTableData tableData = RenewalProcessor.processRenewals(Arrays.asList(), "date");
         assertNotNull(tableData);
         assertEquals(0, tableData.getEntries().size());
     }

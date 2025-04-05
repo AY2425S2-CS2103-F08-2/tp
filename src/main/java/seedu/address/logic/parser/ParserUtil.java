@@ -2,9 +2,6 @@ package seedu.address.logic.parser;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -241,8 +238,11 @@ public class ParserUtil {
     public static RenewalDate parseRenewalDate(String renewalDate) throws ParseException {
         requireNonNull(renewalDate);
         String trimmedRenewalDate = renewalDate.trim();
-        if (!RenewalDate.isValidRenewalDate(trimmedRenewalDate)) {
-            throw new ParseException(RenewalDate.DATE_CONSTRAINTS);
+        if (!RenewalDate.isValidDateFormat(trimmedRenewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FORMAT_CONSTRAINTS);
+        }
+        if (!RenewalDate.isFutureDate(trimmedRenewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FUTURE_CONSTRAINTS);
         }
         return new RenewalDate(trimmedRenewalDate);
     }
@@ -274,28 +274,4 @@ public class ParserUtil {
         return policyTypeSet;
     }
 
-    /**
-     * Parses a {@code String dateStr} into a {@code LocalDate}.
-     * Leading and trailing whitespaces will be trimmed.
-     *
-     * @param dateStr The date string to parse.
-     * @return The parsed {@code LocalDate} object.
-     * @throws ParseException if the given {@code dateStr} is invalid.
-     */
-    public static LocalDate parseDate(String dateStr) throws IllegalArgumentException {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-
-        try {
-            LocalDate parsedDate = LocalDate.parse(dateStr.trim(), formatter);
-
-            //Ensure the formatted date matches the original input to prevent the invalid date to go through
-            if (!dateStr.equals(parsedDate.format(formatter))) {
-                throw new IllegalArgumentException(FilterDateCommandParser.MESSAGE_INVALID_DATE_FORMAT);
-            }
-
-            return parsedDate;
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException(FilterDateCommandParser.MESSAGE_INVALID_DATE_FORMAT);
-        }
-    }
 }

@@ -33,26 +33,27 @@ public class PersonTest {
         // null -> returns false
         assertFalse(ALICE.isSamePerson(null));
 
-        // same name and policy number, all other attributes different -> returns true
-        Person editedAlice = new PersonBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
-                .withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
+        // same name but different policy number -> returns true
+        Person editedAlice = new PersonBuilder(ALICE).withPolicy(VALID_POLICY_BOB).build();
         assertTrue(ALICE.isSamePerson(editedAlice));
 
-        // same name but different policy number -> returns false
-        editedAlice = new PersonBuilder(ALICE).withPolicy(VALID_POLICY_BOB).build();
-        assertFalse(ALICE.isSamePerson(editedAlice));
-
-        // different name but same policy number -> returns false
+        // different name but same policy number -> returns true
         editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).build();
+        assertTrue(ALICE.isSamePerson(editedAlice));
+
+        // different name and different policy number -> returns false
+        editedAlice = new PersonBuilder(ALICE).withName(VALID_NAME_BOB).withPolicy(VALID_POLICY_BOB).build();
         assertFalse(ALICE.isSamePerson(editedAlice));
 
-        // name differs in case, same policy number -> returns false
-        Person editedBob = new PersonBuilder(BENSON).withName(VALID_NAME_BOB.toLowerCase()).build();
+        // name differs in case, different policy number -> returns false
+        Person editedBob = new PersonBuilder(BENSON).withName(VALID_NAME_BOB.toLowerCase())
+                .withPolicy(VALID_POLICY_BOB).build();
         assertFalse(BENSON.isSamePerson(editedBob));
 
-        // name has trailing spaces, same policy number -> returns false
+        // name has trailing spaces, different policy number -> returns false
         String nameWithTrailingSpaces = VALID_NAME_BOB + " ";
-        editedBob = new PersonBuilder(BENSON).withName(nameWithTrailingSpaces).build();
+        editedBob = new PersonBuilder(BENSON).withName(nameWithTrailingSpaces)
+                .withPolicy(VALID_POLICY_BOB).build();
         assertFalse(BENSON.isSamePerson(editedBob));
     }
 

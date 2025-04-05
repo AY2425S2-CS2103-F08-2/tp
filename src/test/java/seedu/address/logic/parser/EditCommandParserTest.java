@@ -102,7 +102,7 @@ public class EditCommandParserTest {
         assertParseFailure(parser, "1" + INVALID_ADDRESS_DESC, Address.MESSAGE_CONSTRAINTS); // invalid address
         assertParseFailure(parser, "1" + INVALID_POLICY_DESC, Policy.MESSAGE_CONSTRAINTS); // invalid policy
         assertParseFailure(parser, "1" + INVALID_TAG_DESC, Tag.MESSAGE_CONSTRAINTS); // invalid tag
-        assertParseFailure(parser, "1" + INVALID_RENEWAL_DATE_DESC, RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, "1" + INVALID_RENEWAL_DATE_DESC, RenewalDate.DATE_FORMAT_CONSTRAINTS);
         // invalid renewal date
 
         // invalid phone followed by valid email
@@ -119,16 +119,16 @@ public class EditCommandParserTest {
                 + VALID_POLICY_AMY, Name.MESSAGE_CONSTRAINTS);
 
         // invalid renewal date - wrong format
-        assertParseFailure(parser, "1 r/2024-12-31", RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, "1 r/2024-12-31", RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // invalid renewal date - invalid day
-        assertParseFailure(parser, "1 r/32-12-2024", RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, "1 r/32-12-2024", RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // invalid renewal date - invalid month
-        assertParseFailure(parser, "1 r/31-13-2024", RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, "1 r/31-13-2024", RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // invalid renewal date - invalid leap year
-        assertParseFailure(parser, "1 r/29-02-2023", RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, "1 r/29-02-2023", RenewalDate.DATE_FORMAT_CONSTRAINTS);
     }
 
     @Test

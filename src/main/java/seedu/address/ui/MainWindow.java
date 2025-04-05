@@ -150,6 +150,10 @@ public class MainWindow extends UiPart<Stage> {
         renewalsTable = new RenewalsTable(logic.getModel());
         renewalsTablePlaceholder.getChildren().add(renewalsTable.getRoot());
 
+        logic.getModel().getRenewalsList().addListener((ListChangeListener<Person>) c -> {
+            renewalsTable.updateRenewals(logic.getModel());
+        });
+
         personDetailPanel = new PersonDetailPanel();
         personDetailPanelPlaceholder.getChildren().add(personDetailPanel.getRoot());
 
@@ -283,8 +287,8 @@ public class MainWindow extends UiPart<Stage> {
                     if (parts.length >= 2) {
                         String[] dates = parts[1].trim().split(" and ");
                         if (dates.length == 2) {
-                            LocalDate startDate = LocalDate.parse(dates[0].trim());
-                            LocalDate endDate = LocalDate.parse(dates[1].trim());
+                            LocalDate startDate = LocalDate.parse(dates[0].trim(), RenewalDate.DATE_FORMATTER);
+                            LocalDate endDate = LocalDate.parse(dates[1].trim(), RenewalDate.DATE_FORMATTER);
                             updateFilterLabel(startDate, endDate);
                         }
                     }
@@ -314,6 +318,23 @@ public class MainWindow extends UiPart<Stage> {
             if (commandText.startsWith("clear")) {
                 renewalsTable.clear();
                 personDetailPanel.clear();
+            }
+
+            if (commandText.startsWith("renew")) {
+                // Extract policy number from command
+                String[] parts = commandText.split("pol/");
+                if (parts.length > 1) {
+                    String policyNumber = parts[1].split(" ")[0];
+                    // Find and select the person with this policy number
+                    logic.getFilteredPersonList().stream()
+                            .filter(p -> p.getPolicy().getPolicyNumber().equals(policyNumber))
+                            .findFirst()
+                            .ifPresent(person -> {
+                                personListPanel.getListView().getSelectionModel().clearSelection();
+                                personListPanel.getListView().getSelectionModel().select(person);
+                                personDetailPanel.setPerson(person);
+                            });
+                }
             }
 
             String newLastUpdated = logic.getModel().getAddressBook().getLastUpdatedString();

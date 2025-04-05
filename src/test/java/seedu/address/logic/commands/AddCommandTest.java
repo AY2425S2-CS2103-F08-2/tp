@@ -191,6 +191,21 @@ public class AddCommandTest {
         public void updateSortedRenewalsList(Comparator<Person> comparator) {
             // do nothing
         }
+
+        @Override
+        public void setRenewalsSortOrder(String sortOrder) {
+            // do nothing
+        }
+
+        @Override
+        public String getRenewalsSortOrder() {
+            return "date";
+        }
+
+        @Override
+        public Comparator<Person> getRenewalsComparator() {
+            return null;
+        }
     }
 
     /**

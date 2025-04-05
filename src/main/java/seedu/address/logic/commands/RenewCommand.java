@@ -23,7 +23,7 @@ public class RenewCommand extends Command {
     public static final String COMMAND_WORD = "renew";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Updates the renewal date of a client "
-            + "identified by their policy number. "
+            + "identified by their policy number. Only one policy number is allowed. "
             + "Parameters: "
             + PREFIX_POLICY + "POLICY_NUMBER "
             + PREFIX_RENEWAL_DATE + "DD-MM-YYYY\n"

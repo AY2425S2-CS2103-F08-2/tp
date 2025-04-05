@@ -34,6 +34,7 @@ public class ModelManager implements Model {
     private final ObservableList<Person> renewalsListSource;
     private final FilteredList<Person> filteredRenewalsList;
     private Comparator<Person> renewalsComparator;
+    private String renewalsSortOrder;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,6 +51,7 @@ public class ModelManager implements Model {
         renewalsListSource = FXCollections.observableArrayList();
         filteredRenewalsList = new FilteredList<>(renewalsListSource);
         renewalsComparator = null;
+        renewalsSortOrder = "date";
     }
 
     public ModelManager() {
@@ -143,7 +145,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Person> getRenewalsList() {
-        return FXCollections.unmodifiableObservableList(filteredRenewalsList);
+        return filteredRenewalsList;
     }
 
     @Override
@@ -155,12 +157,12 @@ public class ModelManager implements Model {
     @Override
     public void updateRenewalsList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        // Clear the current renewals list
-        renewalsListSource.clear();
-        // Add all persons that match the predicate
+        // Create a new list with matching persons
         List<Person> matchingPersons = addressBook.getPersonList().stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
+        // Update the source list to trigger the observable list change
+        renewalsListSource.clear();
         renewalsListSource.addAll(matchingPersons);
         // Apply sorting if a comparator is set
         if (renewalsComparator != null) {
@@ -177,12 +179,24 @@ public class ModelManager implements Model {
     public void updateSortedRenewalsList(Comparator<Person> comparator) {
         requireNonNull(comparator);
         this.renewalsComparator = comparator;
-        // Create a sorted copy of the current list
         List<Person> sortedList = new ArrayList<>(renewalsListSource);
         sortedList.sort(comparator);
-        // Clear and repopulate the source list in the sorted order
+        // Update the source list to maintain the sort order
         renewalsListSource.clear();
         renewalsListSource.addAll(sortedList);
+    }
+
+    @Override
+    public void setRenewalsSortOrder(String sortOrder) {
+        requireNonNull(sortOrder);
+        this.renewalsSortOrder = sortOrder;
+    }
+
+    /**
+     * Returns the current sort order for renewals list.
+     */
+    public String getRenewalsSortOrder() {
+        return renewalsSortOrder;
     }
 
     /**
@@ -218,6 +232,7 @@ public class ModelManager implements Model {
                 && userPrefs.equals(otherModelManager.userPrefs)
                 && filteredPersons.equals(otherModelManager.filteredPersons)
                 && filteredRenewalsList.equals(otherModelManager.filteredRenewalsList)
-                && Objects.equals(renewalsComparator, otherModelManager.renewalsComparator);
+                && Objects.equals(renewalsComparator, otherModelManager.renewalsComparator)
+                && Objects.equals(renewalsSortOrder, otherModelManager.renewalsSortOrder);
     }
 }

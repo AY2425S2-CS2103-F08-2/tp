@@ -81,7 +81,8 @@ public class RenewalsTable extends UiPart<VBox> {
      * @param model The model containing the updated person data
      */
     public void updateRenewals(Model model) {
-        RenewalTableData tableData = RenewalProcessor.processRenewals(model.getRenewalsList());
+        RenewalTableData tableData = RenewalProcessor.processRenewals(
+                model.getRenewalsList(), model.getRenewalsSortOrder());
         renewalsTable.setItems(FXCollections.observableArrayList(tableData.getEntries()));
     }
 
