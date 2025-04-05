@@ -94,14 +94,6 @@ public class RenewalDate {
         return daysUntil >= 0 && daysUntil <= days;
     }
 
-    /**
-     * Returns true if the renewal is due within the specified date range.
-     */
-    public boolean isRenewalDueWithinDateRange(RenewalDate startDate, RenewalDate endDate) {
-        return (value.isEqual(startDate.value) || value.isAfter(startDate.value))
-                && (value.isEqual(endDate.value) || value.isBefore(endDate.value));
-    }
-
     @Override
     public String toString() {
         return value.format(DATE_FORMATTER);
