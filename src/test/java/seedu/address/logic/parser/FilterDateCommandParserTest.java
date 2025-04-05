@@ -90,32 +90,32 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_startDateAfterEndDate_throwsParseException() {
-        assertParseFailure(parser, " sd/01-04-2025 ed/01-03-2025", FilterDateCommandParser.MESSAGE_INVALID_START_DATE);
+        assertParseFailure(parser, " sd/01-06-2025 ed/01-05-2025", FilterDateCommandParser.MESSAGE_INVALID_START_DATE);
     }
 
     @Test
     public void parse_endDateBeyondMaxYears_throwsParseException() {
-        assertParseFailure(parser, " sd/01-03-2025 ed/01-03-2031", FilterDateCommandParser.MESSAGE_INVALID_END_DATE);
+        assertParseFailure(parser, " sd/01-05-2025 ed/01-05-2030", FilterDateCommandParser.MESSAGE_INVALID_END_DATE);
     }
 
     @Test
     public void parse_invalidDateFormat_throwsParseException() {
-        assertParseFailure(parser, " sd/2025-01-01 ed/2025-03-31", RenewalDate.DATE_CONSTRAINTS);
+        assertParseFailure(parser, " sd/2025-01-01 ed/2025-03-31", RenewalDate.DATE_FORMAT_CONSTRAINTS);
     }
 
     @Test
     public void parse_nonExistentDate_failure() {
         // Invalid start date
         assertParseFailure(parser, INVALID_START_DATE_DESC + END_DATE_DESC,
-                RenewalDate.DATE_CONSTRAINTS);
+                RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // Invalid end date
         assertParseFailure(parser, START_DATE_DESC + INVALID_END_DATE_DESC,
-                RenewalDate.DATE_CONSTRAINTS);
+                RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // Both dates invalid
         assertParseFailure(parser, INVALID_START_DATE_DESC + INVALID_END_DATE_DESC,
-                RenewalDate.DATE_CONSTRAINTS);
+                RenewalDate.DATE_FORMAT_CONSTRAINTS);
     }
 
     @Test
@@ -138,10 +138,10 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_startDateEqualsEndDate_success() {
-        String userInput = " sd/01-03-2025 ed/01-03-2025" + SORT_ORDER_DESC_DATE; // Same start and end date
+        String userInput = " sd/01-05-2025 ed/01-05-2025" + SORT_ORDER_DESC_DATE; // Same start and end date
         FilterDateCommand expectedCommand = new FilterDateCommand(
-                new RenewalDate(VALID_START_DATE),
-                new RenewalDate(VALID_START_DATE),
+                new RenewalDate("01-05-2025"),
+                new RenewalDate("01-05-2025"),
                 VALID_SORT_ORDER_DATE
         );
 
@@ -150,10 +150,10 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_endDateAtMaxAllowedLimit_success() {
-        RenewalDate startDate = new RenewalDate(VALID_START_DATE);
-        RenewalDate endDate = new RenewalDate("01-03-2030"); // Max limit of 5 years
+        RenewalDate startDate = new RenewalDate("01-05-2025");
+        RenewalDate endDate = new RenewalDate("01-04-2030"); // Just under 5 years from current test date
 
-        String userInput = " sd/01-03-2025 ed/01-03-2030 s/date";
+        String userInput = " sd/01-05-2025 ed/01-04-2030 s/date";
         FilterDateCommand expectedCommand = new FilterDateCommand(startDate, endDate, VALID_SORT_ORDER_DATE);
 
         assertParseSuccess(parser, userInput, expectedCommand);
