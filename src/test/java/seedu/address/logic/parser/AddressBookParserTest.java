@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POLICY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RENEWAL_DATE_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
-
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
 
@@ -112,23 +113,19 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_filter() throws Exception {
-        LocalDate startDate = LocalDate.of(2025, 3, 1);
-        LocalDate endDate = LocalDate.of(2025, 3, 31);
+        RenewalDate startDate = new RenewalDate(VALID_START_DATE);
+        RenewalDate endDate = new RenewalDate(VALID_END_DATE);
 
         // Test with default parameters
         FilterDateCommand defaultCommand = (FilterDateCommand) parser.parseCommand(
-                FilterDateCommand.COMMAND_WORD + " sd/"
-                        + startDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " ed/"
-                        + endDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
+                FilterDateCommand.COMMAND_WORD + START_DATE_DESC + END_DATE_DESC);
         assertEquals(
                 new FilterDateCommand(startDate, endDate, "date"),
                 defaultCommand);
 
         // Test with custom parameters
         FilterDateCommand customCommand = (FilterDateCommand) parser.parseCommand(
-                FilterDateCommand.COMMAND_WORD + " sd/"
-                        + startDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " ed/"
-                        + endDate.format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) + " s/name");
+                FilterDateCommand.COMMAND_WORD + START_DATE_DESC + END_DATE_DESC + " s/name");
         assertEquals(new FilterDateCommand(startDate, endDate, "name"), customCommand);
     }
 
