@@ -59,6 +59,8 @@ public class FilterDateCommand extends Command {
         Predicate<Person> renewalFilterPredicate = person ->
                 person.getPolicy().isRenewalDueWithinDateRange(startDate, endDate);
 
+        model.setRenewalsSortOrder(sortOrder);
+        model.updateFilteredPersonList(renewalFilterPredicate);
         model.updateRenewalsList(renewalFilterPredicate);
         model.updateSortedRenewalsList(sortFilterDate());
 

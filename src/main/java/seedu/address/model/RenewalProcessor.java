@@ -69,9 +69,13 @@ public class RenewalProcessor {
      */
     public static RenewalTableData processRenewals(List<Person> persons, String sortOrder) {
         Comparator<RenewalEntry> comparator;
-        if ("name".equals(sortOrder)) {
+        if ("name".equalsIgnoreCase(sortOrder)) {
             comparator = (e1, e2) -> e1.getClient().compareToIgnoreCase(e2.getClient());
+        } else if ("date".equalsIgnoreCase(sortOrder)) {
+            comparator = Comparator.comparing(RenewalEntry::getRenewalDate)
+                    .thenComparingLong(RenewalEntry::getDaysLeft);
         } else {
+            // Default to sorting by days left
             comparator = Comparator.comparingLong(RenewalEntry::getDaysLeft);
         }
         List<RenewalEntry> entries = persons.stream()

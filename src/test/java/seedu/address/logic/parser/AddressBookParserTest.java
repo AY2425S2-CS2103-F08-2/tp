@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
-import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POLICY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RENEWAL_DATE_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
@@ -113,20 +113,23 @@ public class AddressBookParserTest {
 
     @Test
     public void parseCommand_filter() throws Exception {
-        RenewalDate startDate = new RenewalDate(VALID_START_DATE);
-        RenewalDate endDate = new RenewalDate(VALID_END_DATE);
+        String validStartDate = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+        String validEndDate = LocalDate.now().plusMonths(2).format(RenewalDate.DATE_FORMATTER);
+        String startDateDesc = " " + PREFIX_START_DATE + validStartDate;
+        String endDateDesc = " " + PREFIX_END_DATE + validEndDate;
 
         // Test with default parameters
         FilterDateCommand defaultCommand = (FilterDateCommand) parser.parseCommand(
-                FilterDateCommand.COMMAND_WORD + START_DATE_DESC + END_DATE_DESC);
+                FilterDateCommand.COMMAND_WORD + startDateDesc + endDateDesc);
         assertEquals(
-                new FilterDateCommand(startDate, endDate, "date"),
+                new FilterDateCommand(new RenewalDate(validStartDate), new RenewalDate(validEndDate), "date"),
                 defaultCommand);
 
         // Test with custom parameters
         FilterDateCommand customCommand = (FilterDateCommand) parser.parseCommand(
-                FilterDateCommand.COMMAND_WORD + START_DATE_DESC + END_DATE_DESC + " s/name");
-        assertEquals(new FilterDateCommand(startDate, endDate, "name"), customCommand);
+                FilterDateCommand.COMMAND_WORD + startDateDesc + endDateDesc + " s/name");
+        assertEquals(new FilterDateCommand(new RenewalDate(validStartDate), new RenewalDate(validEndDate), "name"),
+                customCommand);
     }
 
     @Test

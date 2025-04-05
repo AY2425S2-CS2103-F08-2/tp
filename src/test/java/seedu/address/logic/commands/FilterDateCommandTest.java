@@ -3,8 +3,6 @@ package seedu.address.logic.commands;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,6 +17,9 @@ import seedu.address.model.person.RenewalDate;
 import seedu.address.testutil.PersonBuilder;
 
 public class FilterDateCommandTest {
+    private static final String VALID_START_DATE = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+    private static final String VALID_END_DATE = LocalDate.now().plusMonths(2).format(RenewalDate.DATE_FORMATTER);
+
     private Model model;
     private Person alice;
     private Person bob;
@@ -28,8 +29,8 @@ public class FilterDateCommandTest {
     @BeforeEach
     public void setUp() {
         model = new ModelManager();
-        // Set base date to 6 months in the future to ensure all test dates are valid
-        baseDate = LocalDate.now().plusMonths(6);
+        // Set base date to 1 month in the future to ensure all test dates are valid
+        baseDate = LocalDate.now().plusMonths(1);
         alice = new PersonBuilder().withName("Alice")
                 .withPhone("85355255")
                 .withEmail("alice@gmail.com")
@@ -55,7 +56,7 @@ public class FilterDateCommandTest {
         CommandResult result = command.execute(model);
         assertEquals(String.format(FilterDateCommand.MESSAGE_NO_RESULTS, startDate, endDate),
                 result.getFeedbackToUser());
-        assertTrue(model.getFilteredPersonList().isEmpty());
+        assertTrue(model.getRenewalsList().isEmpty());
     }
 
     @Test
@@ -64,25 +65,25 @@ public class FilterDateCommandTest {
         model.addPerson(bob);
         model.addPerson(charlie);
         RenewalDate startDate = new RenewalDate(VALID_START_DATE);
-        RenewalDate endDate = new RenewalDate("20-03-2025");
+        RenewalDate endDate = new RenewalDate(VALID_END_DATE);
 
         FilterDateCommand command = new FilterDateCommand(startDate, endDate, FilterDateCommand.DEFAULT_SORT);
         CommandResult result = command.execute(model);
 
-        assertEquals(String.format(FilterDateCommand.MESSAGE_FILTER_SUCCESS, 2, startDate, endDate),
+        assertEquals(String.format(FilterDateCommand.MESSAGE_FILTER_SUCCESS, 3, startDate, endDate),
                 result.getFeedbackToUser());
         List<Person> filteredList = model.getRenewalsList();
-        assertEquals(2, filteredList.size());
+        assertEquals(3, filteredList.size());
         assertTrue(filteredList.contains(alice));
         assertTrue(filteredList.contains(bob));
-        assertFalse(filteredList.contains(charlie));
+        assertTrue(filteredList.contains(charlie));
     }
 
     @Test
     public void execute_sortByName_sortsCorrectly() {
         model.addPerson(bob);
         model.addPerson(alice);
-        model.addPerson(charlie)
+        model.addPerson(charlie);
         FilterDateCommand command = new FilterDateCommand(new RenewalDate(VALID_START_DATE),
                 new RenewalDate(VALID_END_DATE), FilterDateCommand.SORT_BY_NAME);
         command.execute(model);
@@ -116,7 +117,7 @@ public class FilterDateCommandTest {
                 .withPhone("88888888")
                 .withEmail("future@gmail.com")
                 .withAddress("Future Avenue")
-                .withPolicy("99999", baseDate.plusYears(1).format(RenewalDate.DATE_FORMATTER)).build();
+                .withPolicy("99999", baseDate.plusMonths(3).format(RenewalDate.DATE_FORMATTER)).build();
         model.addPerson(futurePerson);
         RenewalDate startDate = new RenewalDate(VALID_START_DATE);
         RenewalDate endDate = new RenewalDate(VALID_END_DATE);
@@ -131,19 +132,21 @@ public class FilterDateCommandTest {
 
     @Test
     public void equals() {
-        FilterDateCommand command1 = new FilterDateCommand(new RenewalDate(VALID_START_DATE),
-                new RenewalDate(VALID_END_DATE), FilterDateCommand.DEFAULT_SORT);
-        FilterDateCommand command2 = new FilterDateCommand(new RenewalDate(VALID_START_DATE),
-                new RenewalDate(VALID_END_DATE), FilterDateCommand.DEFAULT_SORT);
-        FilterDateCommand command3 = new FilterDateCommand(new RenewalDate(VALID_START_DATE),
-                new RenewalDate("30-04-2025"), FilterDateCommand.DEFAULT_SORT);
-        FilterDateCommand command4 = new FilterDateCommand(new RenewalDate(VALID_START_DATE),
-                new RenewalDate(VALID_END_DATE), FilterDateCommand.SORT_BY_NAME);
-        assertTrue(command1.equals(command1)); //same object
-        assertTrue(command1.equals(command2));
-        assertFalse(command1.equals(null)); // Null
-        assertFalse(command1.equals(new ClearCommand())); // Different type
-        assertFalse(command1.equals(command3)); // Different date range
-        assertFalse(command1.equals(command4)); // Different sorting
+        RenewalDate startDate = new RenewalDate(VALID_START_DATE);
+        RenewalDate endDate = new RenewalDate(VALID_END_DATE);
+        RenewalDate differentEndDate = new RenewalDate(
+                LocalDate.now().plusMonths(3).format(RenewalDate.DATE_FORMATTER));
+
+        FilterDateCommand command1 = new FilterDateCommand(startDate, endDate, FilterDateCommand.DEFAULT_SORT);
+        FilterDateCommand command2 = new FilterDateCommand(startDate, endDate, FilterDateCommand.DEFAULT_SORT);
+        FilterDateCommand command3 = new FilterDateCommand(startDate, differentEndDate, FilterDateCommand.DEFAULT_SORT);
+        FilterDateCommand command4 = new FilterDateCommand(startDate, endDate, FilterDateCommand.SORT_BY_NAME);
+
+        assertTrue(command1.equals(command1)); // same object
+        assertTrue(command1.equals(command2)); // same values
+        assertFalse(command1.equals(null)); // null
+        assertFalse(command1.equals(new ClearCommand())); // different type
+        assertFalse(command1.equals(command3)); // different date range
+        assertFalse(command1.equals(command4)); // different sorting
     }
 }

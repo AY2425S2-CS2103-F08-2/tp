@@ -1,22 +1,13 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.END_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_END_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_SORT_ORDER_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_START_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.SORT_ORDER_DESC_DATE;
-import static seedu.address.logic.commands.CommandTestUtil.SORT_ORDER_DESC_NAME;
-import static seedu.address.logic.commands.CommandTestUtil.START_DATE_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_END_DATE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SORT_ORDER_DATE;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_SORT_ORDER_NAME;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT_ORDER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
+
+import java.time.LocalDate;
 
 import org.junit.jupiter.api.Test;
 
@@ -25,6 +16,15 @@ import seedu.address.logic.commands.FilterDateCommand;
 import seedu.address.model.person.RenewalDate;
 
 public class FilterDateCommandParserTest {
+    private static final String VALID_START_DATE = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+    private static final String VALID_END_DATE = LocalDate.now().plusMonths(2).format(RenewalDate.DATE_FORMATTER);
+    private static final String START_DATE_DESC = " " + PREFIX_START_DATE + VALID_START_DATE;
+    private static final String END_DATE_DESC = " " + PREFIX_END_DATE + VALID_END_DATE;
+    private static final String SORT_ORDER_DESC_NAME = " " + PREFIX_SORT_ORDER + "name";
+    private static final String SORT_ORDER_DESC_DATE = " " + PREFIX_SORT_ORDER + "date";
+    private static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "30-02-2025"; // invalid day
+    private static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "31-04-2025"; // invalid day
+    private static final String INVALID_SORT_ORDER_DESC = " " + PREFIX_SORT_ORDER + "invalid";
 
     private final FilterDateCommandParser parser = new FilterDateCommandParser();
 
@@ -34,7 +34,7 @@ public class FilterDateCommandParserTest {
         FilterDateCommand expectedCommand = new FilterDateCommand(
                 new RenewalDate(VALID_START_DATE),
                 new RenewalDate(VALID_END_DATE),
-                VALID_SORT_ORDER_NAME
+                "name"
         );
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -82,7 +82,7 @@ public class FilterDateCommandParserTest {
         FilterDateCommand expectedCommand = new FilterDateCommand(
                 new RenewalDate(VALID_START_DATE),
                 new RenewalDate(VALID_END_DATE),
-                VALID_SORT_ORDER_DATE
+                "date"
         );
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -90,12 +90,20 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_startDateAfterEndDate_throwsParseException() {
-        assertParseFailure(parser, " sd/01-06-2025 ed/01-05-2025", FilterDateCommandParser.MESSAGE_INVALID_START_DATE);
+        String laterDate = LocalDate.now().plusMonths(3).format(RenewalDate.DATE_FORMATTER);
+        String earlierDate = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+        assertParseFailure(parser,
+            " " + PREFIX_START_DATE + laterDate + " " + PREFIX_END_DATE + earlierDate,
+            FilterDateCommandParser.MESSAGE_INVALID_START_DATE);
     }
 
     @Test
     public void parse_endDateBeyondMaxYears_throwsParseException() {
-        assertParseFailure(parser, " sd/01-05-2025 ed/01-05-2030", FilterDateCommandParser.MESSAGE_INVALID_END_DATE);
+        String startDate = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+        String farFutureDate = LocalDate.now().plusYears(6).format(RenewalDate.DATE_FORMATTER);
+        assertParseFailure(parser,
+            " " + PREFIX_START_DATE + startDate + " " + PREFIX_END_DATE + farFutureDate,
+            FilterDateCommandParser.MESSAGE_INVALID_END_DATE);
     }
 
     @Test
@@ -130,7 +138,7 @@ public class FilterDateCommandParserTest {
         FilterDateCommand expectedCommand = new FilterDateCommand(
                 new RenewalDate(VALID_START_DATE),
                 new RenewalDate(VALID_END_DATE),
-                VALID_SORT_ORDER_NAME
+                "name"
         );
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -138,11 +146,12 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_startDateEqualsEndDate_success() {
-        String userInput = " sd/01-05-2025 ed/01-05-2025" + SORT_ORDER_DESC_DATE; // Same start and end date
+        String sameDate = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+        String userInput = " " + PREFIX_START_DATE + sameDate + " " + PREFIX_END_DATE + sameDate + SORT_ORDER_DESC_DATE;
         FilterDateCommand expectedCommand = new FilterDateCommand(
-                new RenewalDate("01-05-2025"),
-                new RenewalDate("01-05-2025"),
-                VALID_SORT_ORDER_DATE
+                new RenewalDate(sameDate),
+                new RenewalDate(sameDate),
+                "date"
         );
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -150,11 +159,14 @@ public class FilterDateCommandParserTest {
 
     @Test
     public void parse_endDateAtMaxAllowedLimit_success() {
-        RenewalDate startDate = new RenewalDate("01-05-2025");
-        RenewalDate endDate = new RenewalDate("01-04-2030"); // Just under 5 years from current test date
-
-        String userInput = " sd/01-05-2025 ed/01-04-2030 s/date";
-        FilterDateCommand expectedCommand = new FilterDateCommand(startDate, endDate, VALID_SORT_ORDER_DATE);
+        String startDate = LocalDate.now().plusMonths(1).format(RenewalDate.DATE_FORMATTER);
+        String maxDate = LocalDate.now().plusYears(5).minusDays(1).format(RenewalDate.DATE_FORMATTER);
+        String userInput = " " + PREFIX_START_DATE + startDate + " " + PREFIX_END_DATE + maxDate + " s/date";
+        FilterDateCommand expectedCommand = new FilterDateCommand(
+                new RenewalDate(startDate),
+                new RenewalDate(maxDate),
+                "date"
+        );
 
         assertParseSuccess(parser, userInput, expectedCommand);
     }

@@ -145,7 +145,7 @@ public class ModelManager implements Model {
 
     @Override
     public ObservableList<Person> getRenewalsList() {
-        return FXCollections.unmodifiableObservableList(filteredRenewalsList);
+        return filteredRenewalsList;
     }
 
     @Override
@@ -157,12 +157,12 @@ public class ModelManager implements Model {
     @Override
     public void updateRenewalsList(Predicate<Person> predicate) {
         requireNonNull(predicate);
-        // Clear the current renewals list
-        renewalsListSource.clear();
-        // Add all persons that match the predicate
+        // Create a new list with matching persons
         List<Person> matchingPersons = addressBook.getPersonList().stream()
                 .filter(predicate)
                 .collect(Collectors.toList());
+        // Update the source list to trigger the observable list change
+        renewalsListSource.clear();
         renewalsListSource.addAll(matchingPersons);
         // Apply sorting if a comparator is set
         if (renewalsComparator != null) {
@@ -181,8 +181,9 @@ public class ModelManager implements Model {
         this.renewalsComparator = comparator;
         List<Person> sortedList = new ArrayList<>(renewalsListSource);
         sortedList.sort(comparator);
-        // Clear and repopulate the source list in the sorted order
-        renewalsListSource.setAll(sortedList);
+        // Update the source list to maintain the sort order
+        renewalsListSource.clear();
+        renewalsListSource.addAll(sortedList);
     }
 
     @Override
