@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_ADDRESS;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_END_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NOTE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -11,6 +12,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POLICY_TYPE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_RENEWAL_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SORT_ORDER;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_START_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.Assert.assertThrows;
 
@@ -43,6 +45,8 @@ public class CommandTestUtil {
     public static final String VALID_POLICY_BOB = "654321";
     public static final String VALID_RENEWAL_DATE_AMY = "31-12-2024";
     public static final String VALID_RENEWAL_DATE_BOB = "30-06-2024";
+    public static final String VALID_START_DATE = "01-03-2025";
+    public static final String VALID_END_DATE = "31-03-2025";
     public static final String VALID_POLICY_TYPE_LIFE = "Life";
     public static final String VALID_POLICY_TYPE_HEALTH = "Health";
     public static final String VALID_NOTE_AMY = "some note amy";
@@ -65,6 +69,8 @@ public class CommandTestUtil {
     public static final String POLICY_DESC_BOB = " " + PREFIX_POLICY + VALID_POLICY_BOB;
     public static final String RENEWAL_DATE_DESC_AMY = " " + PREFIX_RENEWAL_DATE + VALID_RENEWAL_DATE_AMY;
     public static final String RENEWAL_DATE_DESC_BOB = " " + PREFIX_RENEWAL_DATE + VALID_RENEWAL_DATE_BOB;
+    public static final String START_DATE_DESC = " " + PREFIX_START_DATE + VALID_START_DATE;
+    public static final String END_DATE_DESC = " " + PREFIX_END_DATE + VALID_END_DATE;
     public static final String POLICY_TYPE_DESC_LIFE = " " + PREFIX_POLICY_TYPE + VALID_POLICY_TYPE_LIFE;
     public static final String POLICY_TYPE_DESC_HEALTH = " " + PREFIX_POLICY_TYPE + VALID_POLICY_TYPE_HEALTH;
     public static final String NOTE_DESC_AMY = " " + PREFIX_NOTE + VALID_NOTE_AMY;
@@ -81,6 +87,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_POLICY_DESC = " " + PREFIX_POLICY + "123 456"; // spaces not allowed in policies
     public static final String INVALID_RENEWAL_DATE_DESC = " " + PREFIX_RENEWAL_DATE + "31-13-2024"; // invalid month
+    public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "30-02-2025"; // invalid day
+    public static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "31-04-2025"; // invalid day
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_SORT_ORDER_DESC = " " + PREFIX_SORT_ORDER + "invalid"; // no such sort order
 

@@ -2,12 +2,12 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.function.Predicate;
 
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
+import seedu.address.model.person.RenewalDate;
 
 /**
  * Filters clients based on policy renewal date range.
@@ -19,15 +19,19 @@ public class FilterDateCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Filters clients whose policy renewal date "
             + "falls within the specified date range.\n"
             + "Parameters: sd/START_DATE ed/END_DATE [s/SORT_ORDER]\n"
-            + "Example: " + COMMAND_WORD + " sd/2025-03-01 ed/2025-03-31 s/name";
+            + "Example: " + COMMAND_WORD + " sd/01-03-2025 ed/31-03-2025 s/name";
 
     public static final String MESSAGE_NO_RESULTS = "No renewals found between %s and %s.";
 
     public static final String MESSAGE_FILTER_SUCCESS = "Found %d policies due for renewal"
             + " between %s and %s.";
 
-    private final LocalDate startDate;
-    private final LocalDate endDate;
+    public static final String DEFAULT_SORT = "date";
+    public static final String SORT_BY_DATE = "date";
+    public static final String SORT_BY_NAME = "name";
+
+    private final RenewalDate startDate;
+    private final RenewalDate endDate;
     private final String sortOrder;
 
     /**
@@ -40,12 +44,12 @@ public class FilterDateCommand extends Command {
      * @param sortOrder The sort order for filtering. If null, defaults to "date".
      * @throws NullPointerException If {@code startDate} or {@code endDate} is null.
      */
-    public FilterDateCommand(LocalDate startDate, LocalDate endDate, String sortOrder) {
+    public FilterDateCommand(RenewalDate startDate, RenewalDate endDate, String sortOrder) {
         requireNonNull(startDate);
         requireNonNull(endDate);
         this.startDate = startDate;
         this.endDate = endDate;
-        this.sortOrder = (sortOrder != null) ? sortOrder : "date";
+        this.sortOrder = sortOrder;
     }
 
     @Override
@@ -81,7 +85,7 @@ public class FilterDateCommand extends Command {
     }
 
     private Comparator<Person> sortFilterDate() {
-        if (sortOrder.equals("date")) {
+        if (sortOrder.equals(SORT_BY_DATE)) {
             return Comparator.comparing(Person::getRenewalDateValue);
         } else {
             // Sort by name (alphabetical order)
