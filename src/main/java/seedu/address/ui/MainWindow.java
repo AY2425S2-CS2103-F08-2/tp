@@ -316,6 +316,23 @@ public class MainWindow extends UiPart<Stage> {
                 personDetailPanel.clear();
             }
 
+            if (commandText.startsWith("renew")) {
+                // Extract policy number from command
+                String[] parts = commandText.split("pol/");
+                if (parts.length > 1) {
+                    String policyNumber = parts[1].split(" ")[0];
+                    // Find and select the person with this policy number
+                    logic.getFilteredPersonList().stream()
+                            .filter(p -> p.getPolicy().getPolicyNumber().equals(policyNumber))
+                            .findFirst()
+                            .ifPresent(person -> {
+                                personListPanel.getListView().getSelectionModel().clearSelection();
+                                personListPanel.getListView().getSelectionModel().select(person);
+                                personDetailPanel.setPerson(person);
+                            });
+                }
+            }
+
             String newLastUpdated = logic.getModel().getAddressBook().getLastUpdatedString();
             statusBarFooter.updateLastUpdated(newLastUpdated);
             int newPersonCount = logic.getFilteredPersonList().size();
