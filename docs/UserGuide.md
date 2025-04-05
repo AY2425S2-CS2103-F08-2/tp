@@ -194,7 +194,7 @@ Updates the renewal date of a client's policy by directly using their policy num
 
 Format: `renew pol/POLICY_NUMBER r/RENEWAL_DATE`
 
-*   The `pol/POLICY_NUMBER` parameter must be a valid policy number in the system.
+*   The `pol/POLICY_NUMBER` parameter must be a valid policy number in the system. Only one policy number is allowed.
 *   The `r/RENEWAL_DATE` parameter must be in the format `DD-MM-YYYY`.
 *   If multiple clients have the same policy number, an error message will be shown. In this case, use the `edit` command with the client's index instead.
 

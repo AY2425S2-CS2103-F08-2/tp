@@ -16,6 +16,8 @@ import seedu.address.model.person.RenewalDate;
  */
 public class RenewCommandParser implements Parser<RenewCommand> {
 
+    public static final String MESSAGE_MULTIPLE_POLICIES = "Only one policy number is allowed for the renew command.";
+
     /**
      * Parses the given {@code String} of arguments in the context of the RenewCommand
      * and returns a RenewCommand object for execution.
@@ -28,6 +30,11 @@ public class RenewCommandParser implements Parser<RenewCommand> {
         if (!arePrefixesPresent(argMultimap, PREFIX_POLICY, PREFIX_RENEWAL_DATE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, RenewCommand.MESSAGE_USAGE));
+        }
+
+        // Check for multiple policy numbers
+        if (argMultimap.getAllValues(PREFIX_POLICY).size() > 1) {
+            throw new ParseException(MESSAGE_MULTIPLE_POLICIES);
         }
 
         String policyNumber = argMultimap.getValue(PREFIX_POLICY).get();

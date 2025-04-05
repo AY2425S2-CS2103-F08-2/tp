@@ -4,6 +4,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_POLICY_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_RENEWAL_DATE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.POLICY_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.POLICY_DESC_BOB;
 import static seedu.address.logic.commands.CommandTestUtil.RENEWAL_DATE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_POLICY_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_RENEWAL_DATE_AMY;
@@ -58,5 +59,9 @@ public class RenewCommandParserTest {
 
         // invalid policy number and invalid renewal date
         assertParseFailure(parser, INVALID_POLICY_DESC + INVALID_RENEWAL_DATE_DESC, Policy.MESSAGE_CONSTRAINTS);
+
+        // multiple policy numbers
+        assertParseFailure(parser, POLICY_DESC_AMY + POLICY_DESC_BOB + RENEWAL_DATE_DESC_AMY,
+                RenewCommandParser.MESSAGE_MULTIPLE_POLICIES);
     }
 }
