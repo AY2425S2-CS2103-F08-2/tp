@@ -137,7 +137,7 @@ class JsonAdaptedPerson {
         }
 
         if (!RenewalDate.isValidRenewalDate(renewalDate)) {
-            throw new IllegalValueException(RenewalDate.DATE_CONSTRAINTS);
+            throw new IllegalValueException(RenewalDate.DATE_FORMAT_CONSTRAINTS);
         }
 
         try {
@@ -145,7 +145,7 @@ class JsonAdaptedPerson {
             final Set<Tag> modelTags = new HashSet<>(personTags);
             return new Person(modelName, modelPhone, modelEmail, modelAddress, modelPolicy, modelNote, modelTags);
         } catch (RuntimeException e) {
-            throw new IllegalValueException(RenewalDate.DATE_CONSTRAINTS);
+            throw new IllegalValueException(RenewalDate.DATE_FORMAT_CONSTRAINTS);
         }
     }
 

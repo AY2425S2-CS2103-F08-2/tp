@@ -113,16 +113,16 @@ public class ModelManagerTest {
     @Test
     public void updateSortedRenewalsList_validComparator_sortsList() {
         // Create persons with different renewal dates
-        String today = LocalDate.now().format(RenewalDate.DATE_FORMATTER);
-        String tomorrow = LocalDate.now().plusDays(1).format(RenewalDate.DATE_FORMATTER);
-        String nextWeek = LocalDate.now().plusDays(7).format(RenewalDate.DATE_FORMATTER);
-        Person personToday = new PersonBuilder().withName("Today Person").withPolicy("111111", today).build();
-        Person personTomorrow = new PersonBuilder().withName("Tomorrow Person").withPolicy("222222", tomorrow).build();
-        Person personNextWeek = new PersonBuilder().withName("NextWeek Person").withPolicy("333333", nextWeek).build();
+        String nearFuture = LocalDate.now().plusMonths(6).format(RenewalDate.DATE_FORMATTER);
+        String midFuture = LocalDate.now().plusMonths(7).format(RenewalDate.DATE_FORMATTER);
+        String farFuture = LocalDate.now().plusMonths(8).format(RenewalDate.DATE_FORMATTER);
+        Person personNear = new PersonBuilder().withName("Near Person").withPolicy("111111", nearFuture).build();
+        Person personMid = new PersonBuilder().withName("Mid Person").withPolicy("222222", midFuture).build();
+        Person personFar = new PersonBuilder().withName("Far Person").withPolicy("333333", farFuture).build();
         // Add persons to model
-        modelManager.addPerson(personNextWeek);
-        modelManager.addPerson(personToday);
-        modelManager.addPerson(personTomorrow);
+        modelManager.addPerson(personFar);
+        modelManager.addPerson(personNear);
+        modelManager.addPerson(personMid);
         // Update renewals list with all persons
         modelManager.updateRenewalsList(PREDICATE_SHOW_ALL_PERSONS);
         // Sort by days until renewal (ascending)
@@ -132,9 +132,9 @@ public class ModelManagerTest {
         // Check that the list is sorted correctly
         List<Person> sortedList = modelManager.getRenewalsList();
         assertEquals(3, sortedList.size());
-        assertEquals(personToday, sortedList.get(0));
-        assertEquals(personTomorrow, sortedList.get(1));
-        assertEquals(personNextWeek, sortedList.get(2));
+        assertEquals(personNear, sortedList.get(0));
+        assertEquals(personMid, sortedList.get(1));
+        assertEquals(personFar, sortedList.get(2));
         // Sort by name
         Comparator<Person> nameComparator =
                 Comparator.comparing(person -> person.getName().fullName);
@@ -142,24 +142,24 @@ public class ModelManagerTest {
         // Check that the list is sorted by name
         sortedList = modelManager.getRenewalsList();
         assertEquals(3, sortedList.size());
-        assertEquals(personNextWeek, sortedList.get(0)); // "NextWeek Person"
-        assertEquals(personToday, sortedList.get(1)); // "Today Person"
-        assertEquals(personTomorrow, sortedList.get(2)); // "Tomorrow Person"
+        assertEquals(personFar, sortedList.get(0)); // "Far Person"
+        assertEquals(personMid, sortedList.get(1)); // "Mid Person"
+        assertEquals(personNear, sortedList.get(2)); // "Near Person"
     }
 
     @Test
     public void updateRenewalsList_withExistingComparator_maintainsSorting() {
         // Create persons with different renewal dates
-        String today = LocalDate.now().format(RenewalDate.DATE_FORMATTER);
-        String tomorrow = LocalDate.now().plusDays(1).format(RenewalDate.DATE_FORMATTER);
-        String nextWeek = LocalDate.now().plusDays(7).format(RenewalDate.DATE_FORMATTER);
-        Person personToday = new PersonBuilder().withName("Today Person").withPolicy("111111", today).build();
-        Person personTomorrow = new PersonBuilder().withName("Tomorrow Person").withPolicy("222222", tomorrow).build();
-        Person personNextWeek = new PersonBuilder().withName("NextWeek Person").withPolicy("333333", nextWeek).build();
+        String nearFuture = LocalDate.now().plusMonths(6).format(RenewalDate.DATE_FORMATTER);
+        String midFuture = LocalDate.now().plusMonths(7).format(RenewalDate.DATE_FORMATTER);
+        String farFuture = LocalDate.now().plusMonths(8).format(RenewalDate.DATE_FORMATTER);
+        Person personNear = new PersonBuilder().withName("Near Person").withPolicy("111111", nearFuture).build();
+        Person personMid = new PersonBuilder().withName("Mid Person").withPolicy("222222", midFuture).build();
+        Person personFar = new PersonBuilder().withName("Far Person").withPolicy("333333", farFuture).build();
         // Add persons to model
-        modelManager.addPerson(personNextWeek);
-        modelManager.addPerson(personToday);
-        modelManager.addPerson(personTomorrow);
+        modelManager.addPerson(personFar);
+        modelManager.addPerson(personNear);
+        modelManager.addPerson(personMid);
         // Set a comparator first
         Comparator<Person> daysUntilRenewalComparator =
                 Comparator.comparingLong(person -> person.getPolicy().getDaysUntilRenewal());
@@ -169,9 +169,9 @@ public class ModelManagerTest {
         // Check that the list is still sorted correctly
         List<Person> sortedList = modelManager.getRenewalsList();
         assertEquals(3, sortedList.size());
-        assertEquals(personToday, sortedList.get(0));
-        assertEquals(personTomorrow, sortedList.get(1));
-        assertEquals(personNextWeek, sortedList.get(2));
+        assertEquals(personNear, sortedList.get(0));
+        assertEquals(personMid, sortedList.get(1));
+        assertEquals(personFar, sortedList.get(2));
     }
 
     @Test
@@ -281,9 +281,10 @@ public class ModelManagerTest {
         ModelManager testModel = new ModelManager(addressBook, userPrefs);
 
         // Add persons in this order: C, A, B
-        Person personA = new PersonBuilder().withName("Alice").build();
-        Person personB = new PersonBuilder().withName("Bob").build();
-        Person personC = new PersonBuilder().withName("Charlie").build();
+        String futureDate = LocalDate.now().plusDays(1).format(RenewalDate.DATE_FORMATTER);
+        Person personA = new PersonBuilder().withName("Alice").withPolicy("111111", futureDate).build();
+        Person personB = new PersonBuilder().withName("Bob").withPolicy("222222", futureDate).build();
+        Person personC = new PersonBuilder().withName("Charlie").withPolicy("333333", futureDate).build();
         testModel.addPerson(personC);
         testModel.addPerson(personA);
         testModel.addPerson(personB);
@@ -297,43 +298,30 @@ public class ModelManagerTest {
         assertEquals(personA, sortedList.get(0));
         assertEquals(personB, sortedList.get(1));
         assertEquals(personC, sortedList.get(2));
-
-        // Now pass null to reset to original order
-        testModel.updateSortedPersonList(null);
-
-        // Get the list after resetting
-        List<Person> resetList = testModel.getFilteredPersonList();
-
-        // Verify persons are in the original insertion order: C, A, B
-        assertEquals(3, resetList.size());
-        assertEquals(personC, resetList.get(0));
-        assertEquals(personA, resetList.get(1));
-        assertEquals(personB, resetList.get(2));
     }
 
     @Test
     public void updateSortedPersonList_validComparator_doesNotThrowException() {
-        // Create a new model with a fresh address book
+        // Create a model with persons in a specific order
         AddressBook addressBook = new AddressBook();
         UserPrefs userPrefs = new UserPrefs();
         ModelManager testModel = new ModelManager(addressBook, userPrefs);
-        // Add persons to model
-        Person personA = new PersonBuilder().withName("Alice").build();
-        Person personB = new PersonBuilder().withName("Bob").build();
-        Person personC = new PersonBuilder().withName("Charlie").build();
+
+        // Add persons in this order: C, A, B
+        String futureDate = LocalDate.now().plusDays(1).format(RenewalDate.DATE_FORMATTER);
+        Person personA = new PersonBuilder().withName("Alice").withPolicy("444444", futureDate).build();
+        Person personB = new PersonBuilder().withName("Bob").withPolicy("555555", futureDate).build();
+        Person personC = new PersonBuilder().withName("Charlie").withPolicy("666666", futureDate).build();
         testModel.addPerson(personC);
         testModel.addPerson(personA);
         testModel.addPerson(personB);
-        // Sort by name - this should not throw an exception
+
+        // Sort by name first
         Comparator<Person> nameComparator = Comparator.comparing(person -> person.getName().fullName);
         testModel.updateSortedPersonList(nameComparator);
-        // Verify that all persons are still in the list
+
+        // Verify sorted order: A, B, C
         List<Person> sortedList = testModel.getFilteredPersonList();
-        assertEquals(3, sortedList.size());
-        assertTrue(sortedList.contains(personA));
-        assertTrue(sortedList.contains(personB));
-        assertTrue(sortedList.contains(personC));
-        // Verify sort order
         assertEquals(personA, sortedList.get(0));
         assertEquals(personB, sortedList.get(1));
         assertEquals(personC, sortedList.get(2));

@@ -44,8 +44,12 @@ public class RenewCommandParser implements Parser<RenewCommand> {
             throw new ParseException(Policy.MESSAGE_CONSTRAINTS);
         }
 
-        if (!RenewalDate.isValidRenewalDate(renewalDate)) {
-            throw new ParseException(RenewalDate.DATE_CONSTRAINTS);
+        if (!RenewalDate.isValidDateFormat(renewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FORMAT_CONSTRAINTS);
+        }
+
+        if (!RenewalDate.isFutureDate(renewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FUTURE_CONSTRAINTS);
         }
 
         return new RenewCommand(policyNumber, new RenewalDate(renewalDate));

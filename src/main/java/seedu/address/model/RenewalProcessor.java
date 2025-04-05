@@ -64,12 +64,19 @@ public class RenewalProcessor {
      * Processes the list of persons and returns table data for renewals.
      *
      * @param persons List of persons to process
+     * @param sortOrder Sort order for the renewals
      * @return Table data containing processed renewal entries
      */
-    public static RenewalTableData processRenewals(List<Person> persons) {
+    public static RenewalTableData processRenewals(List<Person> persons, String sortOrder) {
+        Comparator<RenewalEntry> comparator;
+        if ("name".equals(sortOrder)) {
+            comparator = (e1, e2) -> e1.getClient().compareToIgnoreCase(e2.getClient());
+        } else {
+            comparator = Comparator.comparingLong(RenewalEntry::getDaysLeft);
+        }
         List<RenewalEntry> entries = persons.stream()
                 .map(RenewalEntry::new)
-                .sorted(Comparator.comparingLong(RenewalEntry::getDaysLeft))
+                .sorted(comparator)
                 .collect(Collectors.toList());
         return new RenewalTableData(entries);
     }

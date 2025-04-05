@@ -224,7 +224,7 @@ public class AddCommandParserTest {
         // invalid renewal date
         assertParseFailure(parser, NAME_DESC_BOB + PHONE_DESC_BOB + EMAIL_DESC_BOB + ADDRESS_DESC_BOB
                 + POLICY_DESC_BOB + INVALID_RENEWAL_DATE_DESC + TAG_DESC_HUSBAND + TAG_DESC_FRIEND,
-                RenewalDate.DATE_CONSTRAINTS);
+                RenewalDate.DATE_FORMAT_CONSTRAINTS);
 
         // two invalid values, only first invalid value reported
         assertParseFailure(parser, INVALID_NAME_DESC + PHONE_DESC_BOB + EMAIL_DESC_BOB + INVALID_ADDRESS_DESC

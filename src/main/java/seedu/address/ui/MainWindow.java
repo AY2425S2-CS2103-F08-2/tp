@@ -150,6 +150,10 @@ public class MainWindow extends UiPart<Stage> {
         renewalsTable = new RenewalsTable(logic.getModel());
         renewalsTablePlaceholder.getChildren().add(renewalsTable.getRoot());
 
+        logic.getModel().getRenewalsList().addListener((ListChangeListener<Person>) c -> {
+            renewalsTable.updateRenewals(logic.getModel());
+        });
+
         personDetailPanel = new PersonDetailPanel();
         personDetailPanelPlaceholder.getChildren().add(personDetailPanel.getRoot());
 

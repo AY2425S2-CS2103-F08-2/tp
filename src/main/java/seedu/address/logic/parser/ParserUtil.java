@@ -241,8 +241,11 @@ public class ParserUtil {
     public static RenewalDate parseRenewalDate(String renewalDate) throws ParseException {
         requireNonNull(renewalDate);
         String trimmedRenewalDate = renewalDate.trim();
-        if (!RenewalDate.isValidRenewalDate(trimmedRenewalDate)) {
-            throw new ParseException(RenewalDate.DATE_CONSTRAINTS);
+        if (!RenewalDate.isValidDateFormat(trimmedRenewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FORMAT_CONSTRAINTS);
+        }
+        if (!RenewalDate.isFutureDate(trimmedRenewalDate)) {
+            throw new ParseException(RenewalDate.DATE_FUTURE_CONSTRAINTS);
         }
         return new RenewalDate(trimmedRenewalDate);
     }

@@ -81,6 +81,23 @@ Adds a person to the address book.
 
 Format: `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS pol/POLICY_NUMBER [pt/POLICY_TYPE] [r/RENEWAL_DATE] [note/NOTE] [t/TAG]…​`
 
+<box type="info" seamless>
+
+**Notes about renewal dates:**
+* The renewal date must be in the format `DD-MM-YYYY`
+* The date must be a valid calendar date (e.g., "31-04-2024" is invalid as April has 30 days)
+* The renewal date must be a future date (after today's date)
+* If no renewal date is provided, it defaults to one year from today
+</box>
+
+<box type="warning" seamless>
+
+**Important:** A person cannot be added if:
+* Another person with the same name already exists
+* Another person with the same policy number already exists
+This is to prevent duplicate entries and ensure data integrity.
+</box>
+
 <box type="tip" seamless>
 
 **Tip:** A person can have any number of tags (including 0)
@@ -119,8 +136,10 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [pol/POLICY_NUMBER]
 *   At least one of the optional fields must be provided.
 *   Existing values will be updated to the input values.
 *   When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-*   You can remove all the person's tags by typing `t/` without
-    specifying any tags after it.
+*   You can remove all the person's tags by typing `t/` without specifying any tags after it.
+*   The edit will be rejected if it would result in:
+    * The edited person having the same name as another existing person
+    * The edited person having the same policy number as another existing person
 
 Examples:
 
@@ -195,7 +214,9 @@ Updates the renewal date of a client's policy by directly using their policy num
 Format: `renew pol/POLICY_NUMBER r/RENEWAL_DATE`
 
 *   The `pol/POLICY_NUMBER` parameter must be a valid policy number in the system. Only one policy number is allowed.
-*   The `r/RENEWAL_DATE` parameter must be in the format `DD-MM-YYYY`.
+*   The `r/RENEWAL_DATE` parameter must be in the format `DD-MM-YYYY` and must be:
+    * A valid calendar date (e.g., "31-04-2024" is invalid as April has 30 days)
+    * A future date (after today's date)
 *   If multiple clients have the same policy number, an error message will be shown. In this case, use the `edit` command with the client's index instead.
 
 Examples:
@@ -212,7 +233,7 @@ Format: `viewrenewals [n/NEXT_N_DAYS] [s/SORT_ORDER]`
 
     *   Acceptable values: Positive integer between 1-365
     *   If omitted: Defaults to 30 days
-    *   Error message: "NEXT_N_DAYS must be a positive number between 1 and 365"
+    *   Error message: "NEXT_N_DAYS must be a positive integer between 1 and 365"
     *   Rationale: Setting an upper limit prevents performance issues with extremely large ranges
 
 *   The `s/SORT_ORDER` parameter is optional:

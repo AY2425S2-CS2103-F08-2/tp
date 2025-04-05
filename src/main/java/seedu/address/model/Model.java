@@ -110,6 +110,22 @@ public interface Model {
      */
     void updateSortedPersonList(Comparator<Person> comparator);
 
+    /**
+     * Returns the current comparator used for sorting the renewals list.
+     * @return The current comparator, or null if no sorting is applied.
+     */
+    Comparator<Person> getRenewalsComparator();
+
+    /**
+     * Sets the sort order for renewals list.
+     */
+    void setRenewalsSortOrder(String sortOrder);
+
+    /**
+     * Returns the current sort order for renewals list.
+     */
+    String getRenewalsSortOrder();
+
     @Override
     public boolean equals(Object other);
 }

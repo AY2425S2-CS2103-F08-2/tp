@@ -210,7 +210,34 @@ public class JsonAdaptedPersonTest {
             person.toModelType();
             fail("Expected IllegalValueException was not thrown");
         } catch (IllegalValueException e) {
-            assertEquals(RenewalDate.DATE_CONSTRAINTS, e.getMessage());
+            assertEquals(RenewalDate.DATE_FORMAT_CONSTRAINTS, e.getMessage());
+        }
+    }
+
+    @Test
+    public void toModelType_invalidRenewalDateFormat_throwsIllegalValueException() {
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_POLICY,
+                        VALID_NOTE, INVALID_RENEWAL_DATE, VALID_POLICY_TYPE, VALID_TAGS);
+        try {
+            person.toModelType();
+            fail("Expected IllegalValueException was not thrown");
+        } catch (IllegalValueException e) {
+            assertEquals(RenewalDate.DATE_FORMAT_CONSTRAINTS, e.getMessage());
+        }
+    }
+
+    @Test
+    public void toModelType_pastRenewalDate_throwsIllegalValueException() {
+        String pastDate = LocalDate.now().minusDays(1).format(RenewalDate.DATE_FORMATTER);
+        JsonAdaptedPerson person =
+                new JsonAdaptedPerson(VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_POLICY,
+                        pastDate, VALID_POLICY_TYPE, VALID_NOTE, VALID_TAGS);
+        try {
+            person.toModelType();
+            fail("Expected IllegalValueException was not thrown");
+        } catch (IllegalValueException e) {
+            assertEquals(RenewalDate.DATE_FORMAT_CONSTRAINTS, e.getMessage());
         }
     }
 
@@ -218,14 +245,19 @@ public class JsonAdaptedPersonTest {
     public void toModelType_validFormatButInvalidDateValue_throwsIllegalValueException() {
         // Test various invalid dates that match the format
         String[] invalidDates = {
-            "31-04-2023", // April 31st doesn't exist
+            "31-04-2024", // April 31st doesn't exist
             "29-02-2023" // 2023 is not a leap year
         };
         for (String invalidDate : invalidDates) {
             JsonAdaptedPerson person = new JsonAdaptedPerson(
                     VALID_NAME, VALID_PHONE, VALID_EMAIL, VALID_ADDRESS, VALID_POLICY,
                     VALID_NOTE, invalidDate, VALID_POLICY_TYPE, VALID_TAGS);
-            assertThrows(IllegalValueException.class, () -> person.toModelType());
+            try {
+                person.toModelType();
+                fail("Expected IllegalValueException was not thrown");
+            } catch (IllegalValueException e) {
+                assertEquals(RenewalDate.DATE_FORMAT_CONSTRAINTS, e.getMessage());
+            }
         }
     }
 

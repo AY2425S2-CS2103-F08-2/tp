@@ -55,6 +55,7 @@ public class ViewRenewalsCommand extends Command {
         Predicate<Person> renewalPredicate = person -> person.getPolicy().isRenewalDueWithin(days);
 
         model.updateRenewalsList(renewalPredicate);
+        model.setRenewalsSortOrder(sortOrder);
         model.updateSortedRenewalsList(getComparator());
 
         LocalDate startDate = LocalDate.now();
@@ -70,7 +71,7 @@ public class ViewRenewalsCommand extends Command {
 
     private Comparator<Person> getComparator() {
         if (SORT_BY_NAME.equals(sortOrder)) {
-            return Comparator.comparing(person -> person.getName().fullName);
+            return (p1, p2) -> p1.getName().fullName.compareToIgnoreCase(p2.getName().fullName);
         } else {
             // Sort by days until renewal (ascending order)
             return Comparator.comparingLong(person -> person.getPolicy().getDaysUntilRenewal());
