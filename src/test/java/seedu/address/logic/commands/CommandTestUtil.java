@@ -87,6 +87,8 @@ public class CommandTestUtil {
     public static final String INVALID_ADDRESS_DESC = " " + PREFIX_ADDRESS; // empty string not allowed for addresses
     public static final String INVALID_POLICY_DESC = " " + PREFIX_POLICY + "123 456"; // spaces not allowed in policies
     public static final String INVALID_RENEWAL_DATE_DESC = " " + PREFIX_RENEWAL_DATE + "31-13-2024"; // invalid month
+    public static final String INVALID_START_DATE_DESC = " " + PREFIX_START_DATE + "30-02-2025"; // invalid day
+    public static final String INVALID_END_DATE_DESC = " " + PREFIX_END_DATE + "31-04-2025"; // invalid day
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "hubby*"; // '*' not allowed in tags
     public static final String INVALID_SORT_ORDER_DESC = " " + PREFIX_SORT_ORDER + "invalid"; // no such sort order
 

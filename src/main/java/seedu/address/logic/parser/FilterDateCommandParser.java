@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FilterDateCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.person.RenewalDate;
 
 /**
  * Parses input arguments and creates a new FilterDateCommand object.
@@ -19,13 +20,13 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
 
     public static final String MESSAGE_INVALID_DATE_FORMAT =
             "Invalid date format: Must be valid date in DD-MM-YYYY format";
-    private static final String MESSAGE_INVALID_START_DATE =
+    public static final String MESSAGE_INVALID_START_DATE =
             "Invalid start date: Must be valid date in DD-MM-YYYY format "
-                    + "and less than or equal to end date.";
-    private static final String MESSAGE_INVALID_END_DATE =
+                    + "and before or equal to end date.";
+    public static final String MESSAGE_INVALID_END_DATE =
             "Invalid end date: Must be valid date in DD-MM-YYYY format "
-            + "and more than or equal to start date, and within 5 years from the start date";
-    private static final String MESSAGE_INVALID_SORT =
+            + "and after or equal to start date, and within 5 years from the start date";
+    public static final String MESSAGE_INVALID_SORT =
             "Invalid sort. Use 'date' or 'name' (case-insensitive)";
     private static final int MAX_YEARS_RANGE = 5;
 
@@ -43,15 +44,15 @@ public class FilterDateCommandParser implements Parser<FilterDateCommand> {
 
         argMultimap.verifyNoDuplicatePrefixesFor(PREFIX_START_DATE, PREFIX_END_DATE, PREFIX_SORT_ORDER);
 
-        LocalDate startDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_START_DATE).get());
-        LocalDate endDate = ParserUtil.parseDate(argMultimap.getValue(PREFIX_END_DATE).get());
+        RenewalDate startDate = ParserUtil.parseRenewalDate(argMultimap.getValue(PREFIX_START_DATE).get());
+        RenewalDate endDate = ParserUtil.parseRenewalDate(argMultimap.getValue(PREFIX_END_DATE).get());
 
-        if (startDate.isAfter(endDate)) {
+        if (startDate.value.isAfter(endDate.value)) {
             throw new ParseException(MESSAGE_INVALID_START_DATE);
         }
 
         LocalDate maxAllowedDate = LocalDate.now().plusYears(MAX_YEARS_RANGE);
-        if (endDate.isAfter(maxAllowedDate)) {
+        if (endDate.value.isAfter(maxAllowedDate)) {
             throw new ParseException(MESSAGE_INVALID_END_DATE);
         }
 
