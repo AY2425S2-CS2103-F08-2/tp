@@ -56,13 +56,13 @@ with(this){return _c('p',[_v("For example, the "),_c('code',{pre:true,attrs:{"cl
 with(this){return _c('h3',{attrs:{"id":"ui-component"}},[_v("UI component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#ui-component","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("The "),_c('strong',[_v("API")]),_v(" of this component is specified in "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Ui.java")])])])}
+with(this){return _c('p',[_v("The "),_c('strong',[_v("API")]),_v(" of this component is specified in "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/java/seedu/address/ui/Ui.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Ui.java")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The UI consists of a "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")]),_v(" that is made up of parts e.g."),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("CommandBox")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("ResultDisplay")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("PersonListPanel")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("RenewalsTable")]),_v(", "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("StatusBarFooter")]),_v(" etc. All these, including the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")]),_v(", inherit from the abstract "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UiPart")]),_v(" class which captures the commonalities between classes that represent parts of the visible GUI.")])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" component uses the JavaFx UI framework. The layout of these UI parts are defined in matching "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v(".fxml")]),_v(" files that are in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("src/main/resources/view")]),_v(" folder. For example, the layout of the "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")])]),_v(" is specified in "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow.fxml")])])])}
+with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" component uses the JavaFx UI framework. The layout of these UI parts are defined in matching "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v(".fxml")]),_v(" files that are in the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("src/main/resources/view")]),_v(" folder. For example, the layout of the "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/java/seedu/address/ui/MainWindow.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow")])]),_v(" is specified in "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/resources/view/MainWindow.fxml"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("MainWindow.fxml")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("UI")]),_v(" component,")])}
@@ -86,7 +86,7 @@ with(this){return _c('ul',[_c('li',[_c('p',[_c('code',{pre:true,attrs:{"class":"
 with(this){return _c('h3',{attrs:{"id":"logic-component"}},[_v("Logic component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#logic-component","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic.java")])])])}
+with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/java/seedu/address/logic/Logic.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic.java")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("Here's a (partial) class diagram of the "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Logic")]),_v(" component:")])}
@@ -110,7 +110,7 @@ with(this){return _c('ul',[_c('li',[_v("When called upon to parse a user command
 with(this){return _c('h3',{attrs:{"id":"model-component"}},[_v("Model component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#model-component","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model.java")])])])}
+with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/java/seedu/address/model/Model.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model.java")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Model")]),_v(" component,")])}
@@ -122,7 +122,7 @@ with(this){return _c('ul',[_c('li',[_v("stores the address book data i.e., all "
 with(this){return _c('h3',{attrs:{"id":"storage-component"}},[_v("Storage component"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#storage-component","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Storage.java")])])])}
+with(this){return _c('p',[_c('strong',[_v("API")]),_v(" : "),_c('a',{attrs:{"href":"https://github.com/AY2425S2-CS2103-F08-2/tp/tree/master/src/main/java/seedu/address/storage/Storage.java"}},[_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Storage.java")])])])}
 },function anonymous(
 ) {
 with(this){return _c('p',[_v("The "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("Storage")]),_v(" component,")])}
@@ -242,7 +242,7 @@ with(this){return _c('ul',[_c('li',[_v("The "),_c('code',{pre:true,attrs:{"class
 with(this){return _c('h4',{attrs:{"id":"design-considerations-3"}},[_v("Design Considerations"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#design-considerations-3","onclick":"event.stopPropagation()"}})])}
 },function anonymous(
 ) {
-with(this){return _c('ul',[_c('li',[_c('p',[_v("Aspect: How to handle multiple search criteria")]),_v(" "),_c('ul',[_c('li',[_v("Current Choice: Combine all criteria using logical OR.\n"),_c('ul',[_c('li',[_v("Pros: Ensures that a person is considered a match if any of the specified attributes match, providing more flexible search results.")]),_v(" "),_c('li',[_v("Cons: May result in more matches if multiple criteria are specified.")])])]),_v(" "),_c('li',[_v("Alternative: Use logical AND to require all criteria to match.\n"),_c('ul',[_c('li',[_v("Pros: Ensures that all specified attributes must match, providing precise search results.")]),_v(" "),_c('li',[_v("Cons: May result in fewer matches if multiple criteria are specified.")])])])])]),_v(" "),_c('li',[_c('p',[_v("Aspect: Case sensitivity and partial matches")]),_v(" "),_c('ul',[_c('li',[_v("Current Choice: Use case-insensitive and partial matches.\n"),_c('ul',[_c('li',[_v("Pros: More user-friendly and flexible, accommodating various input styles.")]),_v(" "),_c('li',[_v("Cons: May result in unintended matches if search values are too general.")])])])])])])}
+with(this){return _c('ul',[_c('li',[_c('p',[_v("Aspect: How to handle multiple search criteria")]),_v(" "),_c('ul',[_c('li',[_v("Alternative 1 (current choice): Combine all criteria using logical OR.\n"),_c('ul',[_c('li',[_v("Pros: Ensures that a person is considered a match if any of the specified attributes match, providing more flexible search results.")]),_v(" "),_c('li',[_v("Cons: May result in more matches if multiple criteria are specified.")])])]),_v(" "),_c('li',[_v("Alternative 2: Use logical AND to require all criteria to match.\n"),_c('ul',[_c('li',[_v("Pros: Ensures that all specified attributes must match, providing precise search results.")]),_v(" "),_c('li',[_v("Cons: May result in fewer matches if multiple criteria are specified.")])])])])]),_v(" "),_c('li',[_c('p',[_v("Aspect: Case sensitivity and partial matches")]),_v(" "),_c('ul',[_c('li',[_v("Alternative 1 (current choice): Use case-insensitive and partial matches.\n"),_c('ul',[_c('li',[_v("Pros: More user-friendly and flexible, accommodating various input styles.")]),_v(" "),_c('li',[_v("Cons: May result in unintended matches if search values are too general.")])])]),_v(" "),_c('li',[_v("Alternative 2: Case-sensitive with exact matches\n"),_c('ul',[_c('li',[_v("Pros: Highest precision in search results, ideal for technical/specialized searches and minimizes irrelevant matches")]),_v(" "),_c('li',[_v("Cons: Most restrictive option for users, steeper learning curve and requires perfect knowledge of stored data format")])])])])])])}
 },function anonymous(
 ) {
 with(this){return _c('h3',{attrs:{"id":"filter-command"}},[_v("Filter Command"),_c('a',{staticClass:"fa fa-anchor",attrs:{"href":"#filter-command","onclick":"event.stopPropagation()"}})])}
@@ -599,6 +599,6 @@ with(this){return _c('h3',{attrs:{"id":"exiting-insurebook"}},[_v("Exiting Insur
 with(this){return _c('ol',[_c('li',[_c('p',[_v("Exit InsureBook")]),_v(" "),_c('ol',[_c('li',[_v("Test case: "),_c('code',{pre:true,attrs:{"class":"hljs inline no-lang"}},[_v("exit")]),_c('br'),_v("\nExpected: InsureBook successfully closes.")])])])])}
 },function anonymous(
 ) {
-with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 23:12:45 GMT+8]")])])])}
+with(this){return _c('footer',[_c('div',{staticClass:"text-center"},[_c('small',[_v("["),_c('span',[_c('strong',[_v("Powered by")])]),_v(" "),_c('img',{attrs:{"src":"https://markbind.org/favicon.ico","width":"30"}}),_v(" "),_c('a',{attrs:{"href":"https://markbind.org/"}},[_v("MarkBind 5.6.0")]),_v(", generated on Mon, 7 Apr 2025, 23:15:42 GMT+8]")])])])}
 }];
   
