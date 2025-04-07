@@ -920,7 +920,7 @@ testers are expected to do more _exploratory_ testing.
 
 2. Editing an existing person's policy number to a number that is used already from InsureBook
 
-   1. Prerequisites: There is at least 1 person in the list whose policy number match the policy number that is being edited into.
+   1. Prerequisites: There exists a person in the list whose policy number match the policy number that is being edited into.
 
    1. Test case: `edit 2 pol/123456`<br>
       Expected: No person is edited. Error details are displayed in the status message and command entered stays in the command box.
@@ -958,7 +958,7 @@ testers are expected to do more _exploratory_ testing.
 
 2. Updating a policy renewal date of a person whose policy number does not exist
 
-    1. Prerequisites: There exists a person in the list whose policy number does not match what is being tested and the rd/RENEWAL_DATE must be later than the current date e.g. 20-04-2025.
+    1. Prerequisites: Every person in the list has a policy number that does not match what is being tested and the rd/RENEWAL_DATE must be later than the current date e.g. 20-04-2025.
 
     1. Test case: `renew pol/969696 r/06-11-2025`<br> 
        Expected: No person policy renewal date updated. No policy was found, details are displayed in the status message and command entered stays in the command box.
@@ -983,7 +983,7 @@ testers are expected to do more _exploratory_ testing.
 
 2. Viewing upcoming policy renewals for policy that falls after the specified test day.
 
-    1. Prerequisites: There is at least one person who has a policy renewal date that falls after the specified test day.
+    1. Prerequisites: Every person in the list has a policy renewal date that falls after the specified test day.
 
     1. Test case: `viewrenewals n/60 s/name`<br>
        Expected: No persons with upcoming renewals shown, and details are displayed in the status message.
