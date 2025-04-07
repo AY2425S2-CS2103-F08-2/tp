@@ -65,7 +65,17 @@
         "glossary": "Glossary",
         "appendix-instructions-for-manual-testing": "Appendix: Instructions for manual testing",
         "launch-and-shutdown": "Launch and shutdown",
-        "deleting-a-person": "Deleting a person"
+        "adding-a-person": "Adding a person",
+        "editing-a-person": "Editing a person",
+        "deleting-a-person": "Deleting a person",
+        "updating-a-policy-renewal-date": "Updating a policy renewal date",
+        "viewing-upcoming-policy-renewals": "Viewing upcoming policy renewals",
+        "viewing-policy-renewals-in-date-range": "Viewing policy renewals in date range",
+        "listing-all-persons": "Listing all persons",
+        "locating-persons-by-keyword": "Locating persons by keyword",
+        "viewing-help": "Viewing help",
+        "clearing-insurebook-entries": "Clearing InsureBook entries",
+        "exiting-insurebook": "Exiting InsureBook"
       },
       "headingKeywords": {}
     },
