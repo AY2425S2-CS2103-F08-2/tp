@@ -93,8 +93,6 @@ Indicates critical warnings or irreversible actions. Always read these carefully
    * [General Commands](#general-commands)
      * [Viewing help](#viewing-help-help)
      * [Clearing all entries](#clearing-all-entries-clear)
-     * [Saving the data](#saving-the-data)
-     * [Editing the data file](#editing-the-data-file)
      * [Exiting the program](#exiting-the-program-exit)
 5. [FAQ](#faq)
 6. [Known Issues](#known-issues)
