@@ -145,7 +145,8 @@
         "client-management-commands-3": "Client Management Commands",
         "policy-management-commands-3": "Policy Management Commands",
         "search-commands-3": "Search Commands",
-        "general-commands-3": "General Commands"
+        "general-commands-3": "General Commands",
+        "glossary": "Glossary"
       },
       "headingKeywords": {}
     },
