@@ -1008,7 +1008,7 @@ testers are expected to do more _exploratory_ testing.
 
 2. Viewing policy renewals in a filtered range from the list for a policy that falls outside the specified test date range.
 
-    1. Prerequisites: There is at least 1 person in the list who has a policy renewal date that falls outside the specified test date range.
+    1. Prerequisites: Every person in the list has a policy renewal date that falls outside the specified test date range.
 
     1. Test case: `filter sd/20-04-2025 ed/20-05-2025`<br>
        Expected: No persons shown, and details are displayed in the status message.
